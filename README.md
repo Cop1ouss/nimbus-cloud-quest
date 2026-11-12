@@ -25,7 +25,7 @@ A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-
 **How it works**
 
 - **Codex:** every exam objective as a stop on a map, with notes, traps to avoid, and **interactive 3D models** you can turn and tap: defense in depth, Zero Trust, shared responsibility, the Azure management hierarchy, regions and zones, virtual networks, Conditional Access and Defender XDR.
-- **Deck:** spaced-repetition flashcards that flip back, with Again, Hard, Good and Easy.
+- **Deck:** spaced-repetition flashcards that flip back, rated Again, Shaky, Good or Easy.
 - **Arena:** training quizzes (including Choose 2, Yes/No and match questions), "Which one?" duels for look-alike services, and **3D boss battles** at easy, medium and hard.
 - **Mock exams:** timed and weighted by domain like the real exam.
 - **Cloud Clash:** a 40-level card battler where you defend an Azure tenant. Every card asks an exam question before it plays.
