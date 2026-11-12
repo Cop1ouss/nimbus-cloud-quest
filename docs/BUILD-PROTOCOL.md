@@ -5,7 +5,7 @@
 | 1 Define | Amethyst | Done |
 | 2 Plan | Sapphire | Done |
 | 3 Build | Onyx | Worlds 1–4 done |
-| 4 Ship | Ruby | v29 published |
+| 4 Ship | Ruby | v30 live on GitHub Pages |
 | 5 Maintain | Emerald | Ongoing |
 
 ## 1 · Define (Amethyst)
@@ -44,6 +44,7 @@
 - [x] v28: renamed to Nimbus: Cloud Quest. SC-900 opened as a second cert path (14 stops, 112 cards, 102 questions, 46 duels, 12 bosses, mocks), built from the October 21, 2026 skills outline.
 - [x] v28: four interactive 3D models in the Codex (defense in depth, Zero Trust, Azure hierarchy, regions and zones).
 - [x] v29: bosses rebuilt as 3D block figures. Hierarchy model rebuilt as nested containers. Four new structure models: shared responsibility, virtual network, Conditional Access, Defender XDR.
+- [x] v30: Hex prompt logo, GitHub Pages site with home-screen icon, full source in the repo with a build check in CI.
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)

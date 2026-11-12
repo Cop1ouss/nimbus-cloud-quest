@@ -41,6 +41,31 @@ A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-
 
 Progress is stored in your browser's `localStorage` on each device. Nothing is sent to a server, and nothing is stored in this repo. To move progress between devices, use **Profile → Tools → Back up progress**, then **Restore backup** on the other device.
 
+## Working on it
+
+`index.html` is built from the files in `src/`. Edit those, never `index.html` directly.
+
+| Path | What it is |
+| --- | --- |
+| `src/head.html` | Styles (Catppuccin Frappé and Latte tokens), the page shell and the header logo |
+| `src/app.js` | The whole app: Codex, Deck, Arena, bosses, mocks, Cloud Clash and the 3D models |
+| `src/data_packs.json` | All content: AZ-900 and SC-900 cards, questions, duels, Codex stops and the Cloud Clash campaign |
+| `content/` | Scripts that generate content into `src/data_packs.json`: the Cloud Clash worlds and the SC-900 pack |
+| `tests/` | Playwright checks: regressions, a 40-level campaign bot, backup and restore, accessibility, SC-900 and 3D models |
+| `docs/` | PRD, Build Protocol and the game design doc |
+
+```bash
+python3 build.py                    # rebuild index.html from src/
+python3 build.py --check            # CI: fail if index.html is stale
+python3 build.py --icons            # redraw the app icons from the header logo (needs Playwright)
+python3 content/camp_data.py        # regenerate Cloud Clash World 1 into src/data_packs.json
+python3 content/camp_data2.py       # regenerate Worlds 2 to 4
+(cd content/sc && python3 sc_build.py)   # regenerate the SC-900 pack
+pip install playwright && python3 -m playwright install chromium
+python3 tests/t42.py                # SC-900 pack and 3D models smoke test
+npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Latte
+```
+
 ## Related
 
 - [`secplus-tracker`](https://github.com/Cop1ouss/secplus-tracker): CompTIA Security+ study tracker, same gamified approach.

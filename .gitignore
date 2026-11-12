@@ -1,0 +1,9 @@
+# test screenshots and scratch output land in the repo root
+*.png
+!icon-*.png
+!assets/*.png
+*.out
+backup_test.json
+bad.json
+node_modules/
+__pycache__/

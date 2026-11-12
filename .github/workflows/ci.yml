@@ -25,3 +25,5 @@ jobs:
           node-version: 22
       - name: Check every local link, JSON file and script
         run: python3 .github/scripts/check_site.py
+      - name: index.html matches src/
+        run: python3 build.py --check

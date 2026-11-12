@@ -156,8 +156,8 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root:not([data-layout="phone"]) nav{top:0;bottom:0;right:auto;width:228px;border-top:0;border-right:1px solid var(--line);padding:84px 12px 16px}
 :root:not([data-layout="phone"]) nav .in{grid-template-columns:1fr;gap:6px;max-width:none;margin:0}
 :root:not([data-layout="phone"]) nav button{flex-direction:row;justify-content:flex-start;gap:12px;min-height:50px;padding:0 16px;font-size:16px}
-:root:not([data-layout="phone"]) nav:before{content:"Nimbus";position:absolute;top:20px;left:28px;font-family:var(--fh);font-weight:600;font-size:26px}
-:root:not([data-layout="phone"]) nav:after{content:attr(data-quest);position:absolute;top:52px;left:28px;font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--mute)}
+:root:not([data-layout="phone"]) nav:before{content:"Nimbus";position:absolute;top:20px;left:22px;padding-left:44px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='100,14 174.5,57 174.5,143 100,186 25.5,143 25.5,57' fill='%23232634' stroke='%23ca9ee6' stroke-width='9' stroke-linejoin='round'/%3E%3Cpath d='M60 130 H140 A21 21 0 0 0 138 88 A31 31 0 0 0 80 80 A25 25 0 0 0 60 130 Z' fill='none' stroke='%238caaee' stroke-width='9' stroke-linejoin='round'/%3E%3C/svg%3E") left center/36px 36px no-repeat;font-family:var(--fh);font-weight:600;font-size:26px}
+:root:not([data-layout="phone"]) nav:after{content:attr(data-quest);position:absolute;top:52px;left:66px;font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--mute)}
 :root:not([data-layout="phone"]) .top .brand{display:none}
 :root:not([data-layout="phone"]) .top{padding:14px 0 10px}
 :root:not([data-layout="phone"]) #view.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-items:start}
@@ -176,8 +176,8 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root[data-layout="desktop"] nav{top:0;bottom:0;right:auto;width:228px;border-top:0;border-right:1px solid var(--line);padding:84px 12px 16px}
 :root[data-layout="desktop"] nav .in{grid-template-columns:1fr;gap:6px;max-width:none;margin:0}
 :root[data-layout="desktop"] nav button{flex-direction:row;justify-content:flex-start;gap:12px;min-height:50px;padding:0 16px;font-size:16px}
-:root[data-layout="desktop"] nav:before{content:"Nimbus";position:absolute;top:20px;left:28px;font-family:var(--fh);font-weight:600;font-size:26px}
-:root[data-layout="desktop"] nav:after{content:attr(data-quest);position:absolute;top:52px;left:28px;font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--mute)}
+:root[data-layout="desktop"] nav:before{content:"Nimbus";position:absolute;top:20px;left:22px;padding-left:44px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpolygon points='100,14 174.5,57 174.5,143 100,186 25.5,143 25.5,57' fill='%23232634' stroke='%23ca9ee6' stroke-width='9' stroke-linejoin='round'/%3E%3Cpath d='M60 130 H140 A21 21 0 0 0 138 88 A31 31 0 0 0 80 80 A25 25 0 0 0 60 130 Z' fill='none' stroke='%238caaee' stroke-width='9' stroke-linejoin='round'/%3E%3C/svg%3E") left center/36px 36px no-repeat;font-family:var(--fh);font-weight:600;font-size:26px}
+:root[data-layout="desktop"] nav:after{content:attr(data-quest);position:absolute;top:52px;left:66px;font-size:11px;font-weight:800;letter-spacing:.8px;color:var(--mute)}
 :root[data-layout="desktop"] .top .brand{display:none}
 :root[data-layout="desktop"] .top{padding:14px 0 10px}
 :root[data-layout="desktop"] #view.cols{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-items:start}
@@ -796,7 +796,7 @@ function renderCards(){
   var pool=CARDS.filter(function(c){return inScope(c,cf.scope,'c')}),due=pool.filter(function(c){return cs(c.id)&&isDue(c.id)}).length,nw=pool.filter(function(c){return !cs(c.id)}).length;
   var h='<h2 style="margin-top:16px">Deck</h2><p class="sub small">Spaced repetition. Cards you know come back later, cards you miss come back today.</p>'+chips(cf.scope,'cscope')+togRow('recallType','Type before you flip','Write what you remember first, then see how many key words you hit.');
   h+='<div class="panel"><div class="row" style="justify-content:space-around;text-align:center"><div><div class="big" style="color:var(--acc)">'+due+'</div><div class="small mute">due</div></div><div><div class="big" style="color:var(--xp)">'+nw+'</div><div class="small mute">new</div></div><div><div class="big" style="color:var(--ok)">'+pool.filter(function(c){return mastered(c.id)}).length+'</div><div class="small mute">mastered</div></div></div>'+
-     '<div class="row" style="margin-top:14px"><select id="cSize" aria-label="Session size" style="flex:0 0 120px"><option value="10">10 cards</option><option value="20">20 cards</option><option value="40">40 cards</option></select><button class="btn pri" type="button" data-act="cards-go">Start</button></div></div>';
+     '<div class="row" style="margin-top:14px"><select id="cSize" aria-label="Session size" style="flex:0 0 140px"><option value="10">10 cards</option><option value="20">20 cards</option><option value="40">40 cards</option></select><button class="btn pri" type="button" data-act="cards-go">Start</button></div></div>';
   h+='<div class="panel"><h2>Your boxes</h2>'+box.map(function(n,i){return '<div class="row" style="flex-wrap:nowrap;margin:6px 0"><span class="small mute" style="width:92px">Box '+i+(i>=3?' ★':'')+'</span><div class="bar" style="flex:1"><i style="width:'+(seen?n/Math.max.apply(null,box.concat([1]))*100:0)+'%;background:'+(i>=3?'var(--ok)':'var(--acc)')+'"></i></div><b style="width:28px;text-align:right">'+n+'</b></div>'}).join('')+'<p class="small mute" style="margin:8px 0 0">Box 3 and up counts as mastered. Review gaps: 1, 3, 7, 14, 30 days.</p></div>';
   return h}
 var pf={scope:'all'};

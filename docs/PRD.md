@@ -1,6 +1,6 @@
 # PRD — Nimbus: Cloud Clash (Campaign mode)
 
-**Owner:** Dajoni Gomez · **Status:** Full game loop shipped (v29) · **Updated:** Nov 9, 2026
+**Owner:** Dajoni Gomez · **Status:** Full game loop shipped (v30, live on GitHub Pages) · **Updated:** Nov 12, 2026
 
 ## Problem
 
@@ -75,6 +75,13 @@ Dajoni, on iPhone (commute, breaks) and desktop. Later: other AZ-900 learners.
 - **Models show containment:** the hierarchy model is now resources standing in resource groups, in subscriptions, in a management group.
 - **New models:** shared responsibility (IaaS, PaaS and SaaS towers coloured by who is responsible), virtual network (subnets, VMs, NSG, VPN gateway), Conditional Access (signals, decision, grant or block), Defender XDR (portal, XDR layer, six services).
 - Eight models in total across AZ-900 stops 1, 4, 6, 8 and SC-900 stops 1, 5, 7, 10.
+
+## v30: logo and GitHub Pages
+
+- **Logo:** the Hex prompt mark (a cloud with a `>_` prompt inside a mauve hexagon) in the header, the desktop sidebar, the browser tab and the home-screen icon.
+- **Hosting:** the app now runs at cop1ouss.github.io/nimbus-cloud-quest and can be added to the iPhone home screen. Progress stays in each browser; Back up and Restore move it between the Claude artifact and the site.
+- **Source in the repo:** `src/` holds the styles, app code and content, `content/` the generators, `tests/` the Playwright checks. `build.py` builds `index.html`, and CI fails if it is out of date.
+- Downloads work outside Claude (plain browser download). Ask Nimbo and cloud sync only work inside the Claude artifact.
 
 ## Out of scope
 
