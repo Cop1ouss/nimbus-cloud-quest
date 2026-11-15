@@ -61,6 +61,7 @@ python3 build.py --icons            # redraw the app icons from the header logo 
 python3 content/camp_data.py        # regenerate Cloud Clash World 1 into src/data_packs.json
 python3 content/camp_data2.py       # regenerate Worlds 2 to 4
 (cd content/sc && python3 sc_build.py)   # regenerate the SC-900 pack
+python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions and duels
 pip install playwright && python3 -m playwright install chromium
 python3 tests/t42.py                # SC-900 pack and 3D models smoke test
 npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Latte
