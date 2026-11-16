@@ -19,7 +19,7 @@ var TABS=[['home','Hub'],['learn','Codex'],['cards','Deck'],['play','Arena'],['m
 
 /* ---------- state ---------- */
 function fresh(){return {camp:{lv:{},mast:{}},rivals:{},recallQ:false,recallType:true,mockSave:false,cert:'az900',certs:{},voucher:'',layout:'',mute:false,v:4,xp:0,day:{d:'',cards:0,quiz:0,duel:0,claimed:[]},days:{},stats:{cards:0,quizRight:0,duelWins:0,bestCombo:0,bosses:0,mocks:0},
-  read:{},badges:{},boss:{},att:BASE?[BASE]:[],cards:{},q:{},du:{},exam:'',theme:''}}
+  read:{},badges:{},boss:{},att:BASE?[BASE]:[],cards:{},q:{},du:{},exam:'',theme:'',campx:{}}}
 var state=fresh(),ref=null,saveT=0;
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function lsGet(k){try{var s=localStorage.getItem(k);return s?JSON.parse(s):null}catch(e){return null}}
@@ -137,10 +137,10 @@ var BADGES=[
  ['exp','','Explorer','Read all 12 sections',function(){return SECS.every(function(s){return state.read[s.id]})}],
  ['perf','','Perfect Quiz','10 of 10 in a quiz',function(){return !!state.badges.__perfect}],
  ['ms80','','Microsoft 80','Log 80%+ on the real practice test',function(){return lastMs()>=80}],
- ['w1','','World 1 Cleared','Beat the CapEx Colossus in Cloud Clash',function(){return !!campSave().lv[10]}],
- ['w2','','World 2 Cleared','Beat the Zone Hydra in Cloud Clash',function(){return !!campSave().lv[26]}],
- ['w3','','World 3 Cleared','Beat the Policy Warden in Cloud Clash',function(){return !!campSave().lv[36]}],
- ['w4','','Exam Ready','Beat the final Exam Day boss',function(){return !!campSave().lv[40]}],
+ ['w1','','World 1 Cleared','Beat the CapEx Colossus in Cloud Clash',function(){return !!azLv()[10]}],
+ ['w2','','World 2 Cleared','Beat the Zone Hydra in Cloud Clash',function(){return !!azLv()[26]}],
+ ['w3','','World 3 Cleared','Beat the Policy Warden in Cloud Clash',function(){return !!azLv()[36]}],
+ ['w4','','Exam Ready','Beat the final Exam Day boss',function(){return !!azLv()[40]}],
  ['oncall','','On-Call Hero','Survive 10 incidents in one On-Call Shift',function(){return (campSave().endless.best||0)>=10}],
  ['daily','','Daily Defender','Clear a Daily Incident',function(){return !!campSave().daily.won}],
  ['foil','','Foil Card','Cast one card correctly 10 times',function(){var m=campSave().mast;return Object.keys(m).some(function(k){return m[k]>=10})}]];
@@ -606,7 +606,7 @@ function bossArena(){var tot=S.items.length,rem=Math.max(0,tot-S.right),mood=S.c
 
 /* ---------- Cloud Clash campaign (card battler) ---------- */
 function CAMP(){return PACKS[CERT]&&PACKS[CERT].campaign}
-function campSave(){var c=state.camp=state.camp||{};['lv','mast','up','perks','daily'].forEach(function(k){c[k]=c[k]||{}});c.cash=c.cash||0;c.endless=c.endless||{best:0};c.loadout=c.loadout||[];return c}
+function campSave(){var c;if(CERT==='az900')c=state.camp=state.camp||{};else{state.campx=state.campx||{};c=state.campx[CERT]=state.campx[CERT]||{}}['lv','mast','up','perks','daily'].forEach(function(k){c[k]=c[k]||{}});c.cash=c.cash||0;c.endless=c.endless||{best:0};c.loadout=c.loadout||[];return c}
 var PERKS={reserved:{n:'Reserved Capacity',p:80,ic:'coin',t:'Start every battle with 4 credits instead of 3. Reservations trade commitment for savings.'},
  sla:{n:'SLA Credit',p:80,ic:'heart',t:'+4 max uptime in every battle. SLAs set the uptime you can count on.'},
  advisor:{n:'Advisor Insight',p:100,ic:'star',t:'See the threat after next, not just the next one. Like Azure Advisor, it tells you what is coming.'},
@@ -622,7 +622,10 @@ function pickN(a,n,rnd){a=a.slice();var o=[];while(a.length&&o.length<n)o.push(a
 function dbl(ids){var d=[];ids.forEach(function(id){d.push(id,id)});return d}
 function seedRnd(str){var h=1779033703^str.length;for(var i=0;i<str.length;i++){h=Math.imul(h^str.charCodeAt(i),3432918353);h=h<<13|h>>>19}return function(){h=Math.imul(h^h>>>16,2246822507);h=Math.imul(h^h>>>13,3266489909);return ((h^=h>>>16)>>>0)/4294967296}}
 var FOES=[['rv',1,'Bill Shock Imp'],['rv',2,'Latency Gremlin'],['rv',3,'Misconfig Phantom']],BOSSF=[['boss',1,'CapEx Colossus'],['boss',2,'Zone Hydra'],['boss',3,'Policy Warden']];
-function modesOpen(){return !!campSave().lv[10]}
+function w1Boss(){var L=CAMP().levels.filter(function(x){return x.world===1}).pop();return 'the '+L.foe[2]+' (level '+L.id+')'}
+function azLv(){return (state.camp&&state.camp.lv)||{}}
+// On-Call and Daily open after the last level of World 1 (level 10 in AZ-900)
+function modesOpen(){var C=CAMP();if(!C)return false;var ids=C.levels.filter(function(L){return L.world===1}).map(function(L){return L.id});return !!campSave().lv[Math.max.apply(null,ids)]}
 function endlessLevel(w){var boss=w%5===0,f=boss?BOSSF[(w/5-1)%3]:FOES[(w-1)%3],ks=pickN(threatsFor(S.loadout),boss?6:4);ks.splice(1,0,'hit');return {id:0,world:4,n:'On-Call Shift · Incident '+w,foe:f,hp:boss?30+6*w:14+4*w,up:0,intents:ks}}
 function hitsHard(lo){return lo.some(function(id){var cd=CAMP().cards[id];return cd.tp||(cd.fx||[]).some(function(f){return f[0]==='dmg'})})}
 function startEndless(){var c=campSave(),un=campUnlocked(),lo=c.loadout.filter(function(id){return un.indexOf(id)>=0});if(lo.length<5){toast('Pick at least 5 cards for your loadout');S={type:'camp',view:'loadout'};return}
@@ -643,7 +646,7 @@ function campDraw(n){for(var i=0;i<n;i++){if(!S.deck.length){if(!S.disc.length)r
 function startCamp(l){var C=CAMP(),L=C.levels.filter(function(x){return x.id===l})[0];if(!L||!campOpen(l))return;campBegin(L,campDeck(l),'camp')}
 function campBegin(L,deck,mode){var p=campSave().perks;
   S={type:'camp',view:'battle',mode:mode,lv:L,deck:shuffleIds(deck),hand:[],disc:[],board:[],up:L.up,upMax:L.up,hp:L.hp,hpMax:L.hp,cr:3,turn:0,block:0,boost:1,played:[],casts:0,right:0,fizz:0,log:'',chk:null,xp:0,lastKind:''};
-  S.lanes=L.world>=2;S.lane=0;S.zl=0;S.intent=L.intents[0];if(p.reserved)S.cr=4;if(p.sla){S.up+=4;S.upMax+=4}campDraw(5);SFX.tap()}
+  S.lanes=CAMP().lanes===false?false:L.world>=2;S.lane=0;S.zl=0;S.intent=L.intents[0];if(p.reserved)S.cr=4;if(p.sla){S.up+=4;S.upMax+=4}campDraw(5);SFX.tap()}
 function campThreat(){return CAMP().threats[S.intent]}
 function campCountered(kind){if(S.board.some(function(b){return (CAMP().cards[b.id].guard||[]).indexOf(kind)>=0}))return 'guard';return S.played.some(function(id){return (CAMP().cards[id].counters||[]).indexOf(kind)>=0})?'card':''}
 function campNeedsCheck(id){var m=(campSave().mast[id]||0);return m<3||Math.random()<.25}
@@ -700,7 +703,7 @@ function campToolbar(){var c=campSave(),open=modesOpen();
     '<button class="cbtn sm" type="button" data-act="daily"'+(open?'':' disabled')+'>'+ico('ticket',16)+' Daily'+(dailyDone()?' ✓':'')+'</button>'+
     '<button class="cbtn sm" type="button" data-act="cview:loadout"'+(open?'':' disabled')+'>'+ico('bolt',16)+' On-Call</button>'+
     '<button class="cbtn sm" type="button" data-act="cview:shop">'+ico('cart',16)+' Market</button>'+
-    '<button class="cbtn sm" type="button" data-act="cview:coll">'+ico('grid',16)+' Cards</button></div>'+(open?'':'<p class="cs" style="margin:6px 0 0">Daily Incident and On-Call Shift unlock when you beat the CapEx Colossus (level 10).</p>')+'</div>'}
+    '<button class="cbtn sm" type="button" data-act="cview:coll">'+ico('grid',16)+' Cards</button></div>'+(open?'':'<p class="cs" style="margin:6px 0 0">Daily Incident and On-Call Shift unlock when you beat '+w1Boss()+'.</p>')+'</div>'}
 function cHead(lab,title,sub){return '<div class="crow"><div><div class="clab">'+lab+'</div><h2 class="ch">'+title+'</h2></div><span style="display:flex;gap:6px"><button class="cbtn sm" type="button" data-act="campmap">Map</button>'+quitBtn()+'</span></div>'+(sub?'<p class="csub">'+sub+'</p>':'')}
 function renderShop(){var C=CAMP(),c=campSave(),un=campUnlocked(),h='<div class="camp">'+cHead('AZURE MARKETPLACE','Marketplace','Spend credits from wins on perks and card upgrades. Earn credits from campaign stars, On-Call Shifts and the Daily Incident.')+'<p class="wallet big">'+ico('coin',18)+' <b>'+c.cash+'</b> credits</p>';
   h+='<div class="clab" style="margin-top:12px">PERKS · ALWAYS ACTIVE ONCE BOUGHT</div><div class="shop">'+Object.keys(PERKS).map(function(k){var P=PERKS[k],own=!!c.perks[k];return '<div class="sitem'+(own?' own':'')+'">'+ico(P.ic,22)+'<b>'+esc(P.n)+'</b><span class="cs">'+esc(P.t)+'</span>'+(own?'<span class="cm">OWNED</span>':'<button class="cbtn sm'+(c.cash>=P.p?' pri':'')+'" type="button" data-act="buy:perk:'+k+'"'+(c.cash>=P.p?'':' aria-disabled="true"')+'>'+P.p+' credits</button>')+'</div>'}).join('')+'</div>';
@@ -732,7 +735,7 @@ function objPanel(){var h='<div class="panel"><h2>Exam objectives</h2><p class="
     h+='<h3 style="margin:12px 0 4px">'+esc(DN[d])+'</h3>'+Object.keys(tp).map(function(k){var t=tp[k],n=t.c+t.w,p=n?Math.round(t.c/n*100):0,pv=n>=5&&p>=80;return '<div class="obj"><span>'+esc(k)+(pv?' <b class="done">PROVEN</b>':'')+'</span><span class="small mute">'+(n?p+'% of '+n:'not tried yet')+'</span><div class="bar"><i style="width:'+p+'%;background:'+(pv?'var(--ok)':p>=60?'var(--warn)':'var(--bad)')+'"></i></div></div>'}).join('')});
   return h+'</div>'}
 function foeArt(L,mood,size){return L.foe[0]==='boss'?bossArt(L.foe[1],mood==='enter'?'idle':mood,size,L.foe[3]||2):rivalArt(L.foe[1],mood,size)}
-function layerStrip(kind){var rows=['Data','Apps','OS','Hosts'],you={iaas:3,paas:2,saas:1,hybrid:4}[kind]||0;return '<div class="lay" title="Shared responsibility">'+rows.map(function(r,i){return '<i class="'+(i<you?'you':'ms')+'">'+r+'</i>'}).join('')+'</div>'}
+function layerStrip(kind){if(!kind)return '';var rows=['Data','Apps','OS','Hosts'],you={iaas:3,paas:2,saas:1,hybrid:4}[kind]||0;return '<div class="lay" title="Shared responsibility">'+rows.map(function(r,i){return '<i class="'+(i<you?'you':'ms')+'">'+r+'</i>'}).join('')+'</div>'}
 function renderCamp(){if(S.view==='shop')return renderShop();if(S.view==='coll')return renderColl();if(S.view==='loadout')return renderLoadout();if(S.view!=='battle')return renderCampMap();var C=CAMP(),L=S.lv,T=campThreat(),h='<div class="camp">';
   if(S.over&&S.mode!=='camp')return h+renderModeEnd()+'</div>';
   if(S.over){h+='<div class="center" style="padding:10px 0"><div class="clab">LEVEL '+L.id+'</div><h2 class="ch">'+(S.won?'Tenant secured':'Tenant down')+'</h2>'+foeArt(L,S.won?'dead':'win',130)+
@@ -750,7 +753,7 @@ function renderCamp(){if(S.view==='shop')return renderShop();if(S.view==='coll')
     for(var z=0;z<3;z++){var inl=S.board.filter(function(b){return b.lane===z}),hot=T.lane&&S.zl===z&&!how;
       h+='<div class="lane'+(S.lane===z?' sel':'')+(hot?' hot':'')+'"><button type="button" class="lhd" data-act="clane:'+z+'" aria-pressed="'+(S.lane===z)+'">AZ'+(z+1)+(hot?' !':'')+'</button>'+inl.map(slot).join('')+(inl.length<2?'<div class="slot">empty</div>':'')+'</div>'}
     h+='</div><p class="cs" style="margin:6px 0 0">New single-zone resources deploy to the highlighted zone. Tap a zone to change it.</p>'}
-  h+='<div class="lgd"><i class="you"></i>you manage <i class="ms"></i>Microsoft manages</div></div>';
+  h+=(C.lanes!==false?'<div class="lgd"><i class="you"></i>you manage <i class="ms"></i>Microsoft manages</div>':'')+'</div>';
   h+='<div class="me"><span class="mstat">'+ico('heart',16)+' Uptime <b>'+S.up+'/'+S.upMax+'</b></span><span class="mstat">'+ico('coin',16)+' Credits <b>'+S.cr+'</b></span>'+(S.block?'<span class="mstat">'+ico('shield',16)+' Block <b>'+S.block+'</b></span>':'')+'<span class="cs">Deck '+S.deck.length+' · Discard '+S.disc.length+'</span></div>';
   if(S.log)h+='<p class="clog" role="status">'+esc(S.log)+'</p>';
   h+='<div class="hand">'+S.hand.map(function(id,i){var c=C.cards[id],m=campSave().mast[id]||0,can=c.cost<=S.cr,ctr=(c.counters||[]).concat(c.guard||[]).indexOf(S.intent)>=0;

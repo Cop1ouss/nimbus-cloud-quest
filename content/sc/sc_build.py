@@ -112,7 +112,7 @@ S(10,"Threat protection with Microsoft Defender XDR","High","The largest group i
   "**Defender for Cloud Apps:** CASB. Shadow IT and SaaS control.",
   "**Defender for Identity:** on-premises Active Directory signals.",
   "**Defender Vulnerability Management:** find and prioritize weaknesses.",
-  "**Defender Threat Intelligence:** who the attackers are and how they work.",
+  "**Microsoft Threat Intelligence:** who the attackers are and how they work, in the Defender portal.",
   "**Defender portal:** security.microsoft.com."],
  ["Defender for Identity = on-premises AD. Entra ID Protection = cloud identities.","Defender for Cloud Apps (SaaS) is not Defender for Cloud (Azure workloads)."],
  ["Office = email. Endpoint = device. Identity = AD. Cloud Apps = SaaS."],
@@ -183,6 +183,6 @@ for s in data['packs']['az900']['sections']:
     if s['id']=='s8':s['models']=['did','zt','ca']
     if s['id']=='s1':s['models']=['shared']
     if s['id']=='s6':s['models']=['vnet']
-sys.path.insert(0,'..');import learn_units;learn_units.apply(data)
+sys.path.insert(0,'..');import learn_units;learn_units.apply(data);import camp_certs;camp_certs.apply(data)
 json.dump(data,open(P,'w'),ensure_ascii=False)
 print('sc900',len(CARDS),'cards',len(QS),'questions',len(DUELS),'duels',len(SECS),'sections')

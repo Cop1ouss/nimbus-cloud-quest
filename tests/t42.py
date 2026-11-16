@@ -32,10 +32,9 @@ with sync_playwright() as p:
     for t in ('home','learn','cards','play','me'):
         pg.click('nav [data-tab=%s]'%t);pg.wait_for_timeout(250);pg.screenshot(path='%s/sc_%s.png'%(SP,t),full_page=(t in('learn','play')))
         assert pg.evaluate("document.documentElement.scrollWidth")<=390,t
-    assert pg.locator('.campcta').count()==0
     pg.evaluate("location.hash='learn/s1'");pg.wait_for_timeout(300);assert pg.locator('.m3w').count()==3
     assert pg.locator('.bossart .bx').count()==0
-    pg.evaluate("location.hash='play'");pg.wait_for_timeout(300);assert pg.locator('.bossart .bx').count()>20 and pg.locator('.bossart svg').count()==0
+    pg.evaluate("location.hash='play'");pg.wait_for_timeout(300);assert pg.locator('.campcta').count()==1 and '12 levels' in pg.inner_text('.campcta');assert pg.locator('.bossart .bx').count()>20 and pg.locator('.bossart svg').count()==0
     for s in range(1,15):
         pg.evaluate("location.hash='learn/s%d'"%s);pg.wait_for_timeout(120);assert pg.locator('h1').count()>=1
     # cards session, quiz, duel, boss, mock: just start each and answer one

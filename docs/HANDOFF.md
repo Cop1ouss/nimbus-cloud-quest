@@ -9,9 +9,9 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 | Cert | State | Content |
 | --- | --- | --- |
 | AZ-900 | Built (v31) | 172 cards, 212 questions, 91 duels, 12 stops, 40-level Cloud Clash |
-| SC-900 | Built (v28) | 112 cards, 102 questions, 46 duels, 14 stops. Questions not yet checked against a Microsoft practice assessment |
-| AZ-104 | Built (v32) | 137 cards, 130 questions, 59 duels, 15 stops, 3 new 3D models. Not yet checked against a Microsoft practice assessment |
-| SC-500 | Built (v34, checked v35) | 105 cards, 101 questions, 52 duels, 12 stops, 3 models. Facts checked on Learn. Practice assessment not released yet |
+| SC-900 | Built (v28, checked v36) | 112 cards, 102 questions, 46 duels, 14 stops, 12-level Cloud Clash. Checked on Learn against the Oct 21, 2026 outline |
+| AZ-104 | Built (v32) | 137 cards, 130 questions, 59 duels, 15 stops, 3 new 3D models, 15-level Cloud Clash. Not yet checked against a Microsoft practice assessment |
+| SC-500 | Built (v34, checked v35) | 105 cards, 101 questions, 52 duels, 12 stops, 3 models, 12-level Cloud Clash. Facts checked on Learn. Practice assessment not released yet |
 
 - Live site: https://cop1ouss.github.io/nimbus-cloud-quest/ (GitHub Pages, `main`, root).
 - Claude artifact: https://claude.ai/artifact/PoB3gf2GAtn86ZcK5hRMyy (same app; has cloud sync and Ask Nimbo).
@@ -61,9 +61,9 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 
 0. SC-500: swap `msUrl` for the real practice assessment when Microsoft publishes it and remove `msNote`. (Facts and models done in v35.)
 
-1. Check SC-900 (then AZ-104, SC-500) questions against the new practice assessments on AI Skills Navigator and fix weak spots.
+1. SC-900 checked on Learn in v36. Still open: compare with the Microsoft practice assessment (Dajoni takes it), then AZ-104.
 2. ~~Learn links per stop~~ done in v35 (`content/learn_units.py`).
-3. A Cloud Clash world per cert (`campaign` is AZ-900 only).
+3. ~~A Cloud Clash world per cert~~ done in v36 (`content/camp_certs.py`, saves in `state.campx`).
 4. ~~Offline support~~ done in v35 (`sw.js`, GitHub Pages only).
 5. ~~Review mode from missed questions~~ done in v35 (Arena → Mistake review).
 6. Rebalance Cloud Clash enemy HP from Dajoni's real play, and fix whatever his iPhone playtest finds.

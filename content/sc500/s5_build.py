@@ -163,6 +163,6 @@ assert sum(META['mix'])==50 and len(DUELS)>=36
 P='../../src/data_packs.json';data=json.load(open(P))
 data['packs']['sc500']=dict(meta=META,cards=CARDS,questions=QS,sections=SECS,duels=DUELS)
 data['planned']=[p for p in data['planned'] if p['id']!='sc500']
-sys.path.insert(0,'..');import learn_units;learn_units.apply(data)
+sys.path.insert(0,'..');import learn_units;learn_units.apply(data);import camp_certs;camp_certs.apply(data)
 json.dump(data,open(P,'w'),ensure_ascii=False)
 print('sc500',len(CARDS),'cards',len(QS),'questions',len(DUELS),'duels',len(SECS),'sections',{d:sum(q['d']==int(d) for q in QS) for d in META['domains']})

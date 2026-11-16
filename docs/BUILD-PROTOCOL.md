@@ -5,7 +5,7 @@
 | 1 Define | Amethyst | Done |
 | 2 Plan | Sapphire | Done |
 | 3 Build | Onyx | Worlds 1–4 done |
-| 4 Ship | Ruby | v35 live on GitHub Pages |
+| 4 Ship | Ruby | v36 live on GitHub Pages |
 | 5 Maintain | Emerald | Ongoing |
 
 ## 1 · Define (Amethyst)
@@ -50,13 +50,14 @@
 - [x] v33: UI polish. Pop-up messages moved to the top on phones, exam weights shown as domain chips in the Codex, 3D model labels always face you, Ready to book checklist with a progress bar, last shadows removed.
 - [x] v34: SC-500 pack (12 stops, 105 cards, 100 questions, 52 duels, 12 bosses, mocks). All four certs on the route now have content.
 - [x] v35: SC-500 facts verified and fixed, practice assessment note, 3 new models (PIM, Key Vault, Sentinel); Mistake review; offline support; Learn links on every SC-900, AZ-104 and SC-500 stop.
+- [x] v36: Cloud Clash for SC-900 (12 levels), AZ-104 (15) and SC-500 (12) with per-cert saves; SC-900 checked against Learn and the October 21, 2026 outline.
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
 - [ ] SC-500: swap in the practice assessment link when Microsoft releases it, and re-check the Security for AI stop before the exam.
 - [ ] AZ-104: check against the AI Skills Navigator practice assessment.
 - [ ] Retune enemy HP from real play.
-- [ ] Check SC-900 questions against the new practice assessments on AI Skills Navigator.
-- [ ] A Cloud Clash world per cert (Cloud Clash is AZ-900 only today).
+- [ ] Dajoni: take the SC-900 practice assessment and log any question the app gets wrong (Learn check done in v36).
+- [ ] Retune HP of the new campaigns from real play (tuned by a perfect bot).
 - [ ] Add questions where topic pools are small (Shared responsibility, Cost model).
 - [ ] After each practice assessment, add duel pairs and campaign threats for the new mix-ups.

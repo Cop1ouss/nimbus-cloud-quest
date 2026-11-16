@@ -70,13 +70,14 @@ python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions
 pip install playwright && python3 -m playwright install chromium
 python3 tests/t42.py out/          # SC-900, AZ-104, SC-500 and 3D models smoke test
 python3 tests/t43.py out/          # Mistake review
+python3 tests/t44.py               # Cloud Clash bot for SC-900, AZ-104, SC-500 (about 7 minutes)
 npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Latte
 ```
 
 ## Backlog
 
-- Check SC-900 questions against the new practice assessments
-- A Cloud Clash world per cert
+- Compare SC-900 and AZ-104 with the Microsoft practice assessments
+- Retune Cloud Clash HP from real play
 - SC-500 practice assessment link when Microsoft releases it
 
 ## Related
