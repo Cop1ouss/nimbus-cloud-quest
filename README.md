@@ -76,6 +76,7 @@ npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Lat
 
 | | |
 | --- | --- |
+| 🗺️ [Handoff plan](docs/HANDOFF.md) | What is built, and the plan for the AZ-104 and SC-500 packs |
 | 📋 [PRD](docs/PRD.md) | The problem, the goal, scope and the finish line |
 | 🧭 [Build Protocol](docs/BUILD-PROTOCOL.md) | The five gem phases and where the build stands |
 | 🛡️ [Security policy](SECURITY.md) | How to report a vulnerability privately |

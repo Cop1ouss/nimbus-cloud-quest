@@ -7,3 +7,4 @@ backup_test.json
 bad.json
 node_modules/
 __pycache__/
+artifact.html

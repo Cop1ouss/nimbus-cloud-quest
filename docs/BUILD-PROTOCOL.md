@@ -49,6 +49,7 @@
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
+- [ ] AZ-104 and SC-500 packs: outlines in `content/outlines.json`, plan in `docs/HANDOFF.md`.
 - [ ] Retune enemy HP from real play.
 - [ ] SC-900: add Microsoft Learn unit links per stop, and a Cloud Clash world if wanted.
 - [ ] Add questions where topic pools are small (Shared responsibility, Cost model).

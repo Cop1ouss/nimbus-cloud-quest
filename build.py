@@ -1,6 +1,7 @@
 # Builds index.html from src/ (head.html + data_packs.json + app.js).
 #   python3 build.py           rebuild index.html
 #   python3 build.py --check   fail if index.html is out of date (CI)
+#   python3 build.py --artifact  also write artifact.html for publishing to the Claude artifact
 #   python3 build.py --icons   also redraw icon.svg and the PNG icons (needs Playwright)
 import json, re, sys
 
@@ -32,6 +33,11 @@ if '--check' in sys.argv:
 else:
     open('index.html', 'w', encoding='utf-8').write(out)
     print('built index.html', len(out), 'bytes')
+
+if '--artifact' in sys.argv:
+    # the Claude artifact copy: same app without the PWA head (the artifact page supplies its own)
+    open('artifact.html', 'w', encoding='utf-8').write('<!DOCTYPE html>\n' + out[len(HEAD):])
+    print('wrote artifact.html')
 
 if '--icons' in sys.argv:
     mark = re.search(r'<svg class="bmark".*?</svg>', head).group(0).replace(' class="bmark"', '').replace(' aria-hidden="true"', '')

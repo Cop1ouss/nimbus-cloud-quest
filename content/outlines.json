@@ -1,0 +1,420 @@
+{
+ "az104": {
+  "id": "az104",
+  "code": "AZ-104",
+  "name": "Microsoft Azure Administrator",
+  "exam": "Exam AZ-104",
+  "outline": "Skills measured as of October 26, 2023 (as shown on Microsoft Learn on Nov 16, 2026; re-check before building)",
+  "studyGuide": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-104",
+  "domains": {
+   "1": "Manage Azure identities and governance",
+   "2": "Implement and manage storage",
+   "3": "Deploy and manage Azure compute resources",
+   "4": "Implement and manage virtual networking",
+   "5": "Monitor and maintain Azure resources"
+  },
+  "weights": {
+   "1": "20-25%",
+   "2": "15-20%",
+   "3": "20-25%",
+   "4": "15-20%",
+   "5": "10-15%"
+  },
+  "suggestedMix": [
+   12,
+   9,
+   12,
+   9,
+   8
+  ],
+  "suggestedMins": 100,
+  "stops": [
+   {
+    "id": "s1",
+    "d": 1,
+    "title": "Microsoft Entra users and groups",
+    "obj": [
+     "Create users and groups",
+     "Manage user and group properties",
+     "Manage licenses in Microsoft Entra ID",
+     "Manage external users",
+     "Configure self-service password reset (SSPR)"
+    ]
+   },
+   {
+    "id": "s2",
+    "d": 1,
+    "title": "Access to Azure resources",
+    "obj": [
+     "Manage built-in Azure roles",
+     "Assign roles at different scopes",
+     "Interpret access assignments"
+    ]
+   },
+   {
+    "id": "s3",
+    "d": 1,
+    "title": "Subscriptions and governance",
+    "obj": [
+     "Implement and manage Azure Policy",
+     "Configure resource locks",
+     "Apply and manage tags on resources",
+     "Manage resource groups",
+     "Manage subscriptions",
+     "Manage costs by using alerts, budgets, and Azure Advisor recommendations",
+     "Configure management groups"
+    ]
+   },
+   {
+    "id": "s4",
+    "d": 2,
+    "title": "Access to storage",
+    "obj": [
+     "Configure Azure Storage firewalls and virtual networks",
+     "Create and use shared access signature (SAS) tokens",
+     "Configure stored access policies",
+     "Manage access keys",
+     "Configure identity-based access for Azure Files"
+    ]
+   },
+   {
+    "id": "s5",
+    "d": 2,
+    "title": "Storage accounts",
+    "obj": [
+     "Create and configure storage accounts",
+     "Configure Azure Storage redundancy",
+     "Configure object replication",
+     "Configure storage account encryption",
+     "Manage data by using Azure Storage Explorer and AzCopy"
+    ]
+   },
+   {
+    "id": "s6",
+    "d": 2,
+    "title": "Azure Files and Blob Storage",
+    "obj": [
+     "Create and configure a file share in Azure Storage",
+     "Create and configure a container in Blob Storage",
+     "Configure storage tiers",
+     "Configure snapshots and soft delete for Azure Files",
+     "Configure blob lifecycle management",
+     "Configure blob versioning"
+    ]
+   },
+   {
+    "id": "s7",
+    "d": 3,
+    "title": "ARM templates and Bicep",
+    "obj": [
+     "Interpret an Azure Resource Manager template or a Bicep file",
+     "Modify an existing Azure Resource Manager template",
+     "Modify an existing Bicep file",
+     "Deploy resources by using an Azure Resource Manager template or a Bicep file",
+     "Export a deployment as an Azure Resource Manager template or convert an Azure Resource Manager template to a Bicep file"
+    ]
+   },
+   {
+    "id": "s8",
+    "d": 3,
+    "title": "Virtual machines",
+    "obj": [
+     "Create a virtual machine",
+     "Configure Azure Disk Encryption",
+     "Move a virtual machine to another resource group, subscription, or region",
+     "Manage virtual machine sizes",
+     "Manage virtual machine disks",
+     "Deploy virtual machines to availability zones and availability sets",
+     "Deploy and configure an Azure Virtual Machine Scale Sets"
+    ]
+   },
+   {
+    "id": "s9",
+    "d": 3,
+    "title": "Containers",
+    "obj": [
+     "Create and manage an Azure container registry",
+     "Provision a container by using Azure Container Instances",
+     "Provision a container by using Azure Container Apps",
+     "Manage sizing and scaling for containers, including Azure Container Instances and Azure Container Apps"
+    ]
+   },
+   {
+    "id": "s10",
+    "d": 3,
+    "title": "Azure App Service",
+    "obj": [
+     "Provision an App Service plan",
+     "Configure scaling for an App Service plan",
+     "Create an App Service",
+     "Configure certificates and Transport Layer Security (TLS) for an App Service",
+     "Map an existing custom DNS name to an App Service",
+     "Configure backup for an App Service",
+     "Configure networking settings for an App Service",
+     "Configure deployment slots for an App Service"
+    ]
+   },
+   {
+    "id": "s11",
+    "d": 4,
+    "title": "Virtual networks",
+    "obj": [
+     "Create and configure virtual networks and subnets",
+     "Create and configure virtual network peering",
+     "Configure public IP addresses",
+     "Configure user-defined network routes",
+     "Troubleshoot network connectivity"
+    ]
+   },
+   {
+    "id": "s12",
+    "d": 4,
+    "title": "Secure access to virtual networks",
+    "obj": [
+     "Create and configure network security groups (NSGs) and application security groups",
+     "Evaluate effective security rules in NSGs",
+     "Implement Azure Bastion",
+     "Configure service endpoints for Azure platform as a service (PaaS)",
+     "Configure private endpoints for Azure PaaS"
+    ]
+   },
+   {
+    "id": "s13",
+    "d": 4,
+    "title": "Name resolution and load balancing",
+    "obj": [
+     "Configure Azure DNS",
+     "Configure an internal or public load balancer",
+     "Troubleshoot load balancing"
+    ]
+   },
+   {
+    "id": "s14",
+    "d": 5,
+    "title": "Monitoring",
+    "obj": [
+     "Interpret metrics in Azure Monitor",
+     "Configure log settings in Azure Monitor",
+     "Query and analyze logs in Azure Monitor",
+     "Set up alert rules, action groups, and alert processing rules in Azure Monitor",
+     "Configure and interpret monitoring of virtual machines, storage accounts, and networks by using Azure Monitor Insights",
+     "Use Azure Network Watcher and Connection Monitor"
+    ]
+   },
+   {
+    "id": "s15",
+    "d": 5,
+    "title": "Backup and recovery",
+    "obj": [
+     "Create a Recovery Services vault",
+     "Create an Azure Backup vault",
+     "Create and configure a backup policy",
+     "Perform backup and restore operations by using Azure Backup",
+     "Configure Azure Site Recovery for Azure resources",
+     "Perform a failover to a secondary region by using Site Recovery",
+     "Configure and interpret reports and alerts for backups"
+    ]
+   }
+  ]
+ },
+ "sc500": {
+  "id": "sc500",
+  "code": "SC-500",
+  "name": "Microsoft Cloud and AI Security Engineer Associate",
+  "exam": "Exam SC-500: Implementing End-to-End Security Controls for Cloud and AI Workloads",
+  "outline": "Skills measured as shown on Microsoft Learn on Nov 16, 2026 (no date given; re-check before building)",
+  "studyGuide": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/sc-500",
+  "domains": {
+   "1": "Manage identity, access, and governance",
+   "2": "Secure storage, databases, and networking",
+   "3": "Secure compute",
+   "4": "Manage and monitor security posture"
+  },
+  "weights": {
+   "1": "20-25%",
+   "2": "25-30%",
+   "3": "20-25%",
+   "4": "20-25%"
+  },
+  "suggestedMix": [
+   12,
+   14,
+   12,
+   12
+  ],
+  "suggestedMins": 100,
+  "stops": [
+   {
+    "id": "s1",
+    "d": 1,
+    "title": "Secure access with Microsoft Entra ID",
+    "obj": [
+     "Implement and configure Privileged Identity Management (PIM)",
+     "Implement conditional access policies",
+     "Implement and configure authentication methods, including multifactor authentication (MFA) and passwordless",
+     "Implement and configure identity for applications, including enterprise applications and app registrations",
+     "Manage OAuth permission grants and consent settings",
+     "Implement and configure managed identities for Azure resources"
+    ]
+   },
+   {
+    "id": "s2",
+    "d": 1,
+    "title": "Secrets and keys with Azure Key Vault",
+    "obj": [
+     "Deploy Key Vault",
+     "Configure Key Vault settings",
+     "Configure access to Key Vault",
+     "Configure firewall settings on Key Vault",
+     "Manage keys, secrets, and certificates",
+     "Scan for secrets by using Defender Cloud Security Posture Management (Defender CSPM)",
+     "Implement Defender for Key Vault"
+    ]
+   },
+   {
+    "id": "s3",
+    "d": 1,
+    "title": "Governance and regulatory compliance",
+    "obj": [
+     "Implement and configure security controls by using Azure Policy, including built-in and custom policy definitions",
+     "Evaluate regulatory compliance by using Microsoft Defender for Cloud",
+     "Implement and configure security controls in Defender for Cloud, including security standards and recommendations",
+     "Implement resource locks",
+     "Manage Azure built-in role assignments",
+     "Manage custom roles, including Azure roles and Microsoft Entra roles",
+     "Evaluate and remediate overprivileged access assignments by using Azure role-based access control (RBAC)",
+     "Configure security controls for backup protection by using Azure Backup security features",
+     "Implement and configure security controls by using infrastructure as code"
+    ]
+   },
+   {
+    "id": "s4",
+    "d": 2,
+    "title": "Security for storage accounts",
+    "obj": [
+     "Implement and configure security for storage accounts",
+     "Configure Azure Storage firewall rules",
+     "Implement Defender for Storage threat protection configurations",
+     "Manage access to storage, including access policies"
+    ]
+   },
+   {
+    "id": "s5",
+    "d": 2,
+    "title": "Security for databases",
+    "obj": [
+     "Implement platform-level security configurations in Azure SQL",
+     "Configure database auditing for Azure SQL Database and Azure SQL Managed Instance",
+     "Configure Defender for Databases protection across Azure database services"
+    ]
+   },
+   {
+    "id": "s6",
+    "d": 2,
+    "title": "Security for Azure network services",
+    "obj": [
+     "Implement and manage network security groups (NSGs) and application security groups (ASGs)",
+     "Implement and configure network access policies by using Azure Virtual Network Manager",
+     "Configure security for an Azure Virtual WAN",
+     "Implement and configure security for virtual private network (VPN) connections",
+     "Implement and configure Microsoft Entra Private Access",
+     "Configure Azure private endpoints to secure access to Azure platform as a service (PaaS) resources",
+     "Configure Azure Private Link services to secure access to network resources",
+     "Implement and configure Azure Firewall",
+     "Evaluate effective security rules by using Azure Network Watcher diagnostics"
+    ]
+   },
+   {
+    "id": "s7",
+    "d": 3,
+    "title": "Security for AI",
+    "obj": [
+     "Identify overexposure of data in SharePoint",
+     "Identify risks related to Microsoft Copilot and AI apps by using Microsoft Purview Data Security Posture Management (DSPM)",
+     "Enable and configure real-time protection for Microsoft Copilot Studio agents",
+     "Implement conditional access for Microsoft Entra Agent ID",
+     "Analyze blast radius for security risks related to Entra Agent ID by using Defender XDR",
+     "Manage Entra Agent ID access",
+     "Configure and deploy AI Gateway in Azure API Management for Microsoft Foundry",
+     "Enable Defender for AI Service in Cloud Workload Protection in Defender for Cloud",
+     "Configure guardrails for agent security in Foundry",
+     "Monitor AI security by using the Data and AI security dashboard in Defender for Cloud",
+     "Manage agents in Microsoft 365 admin center"
+    ]
+   },
+   {
+    "id": "s8",
+    "d": 3,
+    "title": "Security for servers and VMs",
+    "obj": [
+     "Implement and configure disk encryption",
+     "Plan and implement Azure Bastion",
+     "Enable and enforce use of just-in-time (JIT) VM access",
+     "Extend security controls to hybrid and multicloud servers by using Azure Arc",
+     "Onboard servers to Defender for Servers in Defender for Cloud, including hybrid and multicloud scenarios",
+     "Configure Defender for Servers settings, including vulnerability scanning, and endpoint detection and response (EDR)",
+     "Implement and manage agentless scanning for VMs in Defender for Servers",
+     "Configure security features on a VM, including secure boot, virtual Trusted Platform Module (vTPM), integrity monitoring, and security type",
+     "Enforce security configuration of Azure-managed servers by using Azure Machine Configuration"
+    ]
+   },
+   {
+    "id": "s9",
+    "d": 3,
+    "title": "Security for application platform services",
+    "obj": [
+     "Detect misconfigurations and runtime risks in container workloads by using Defender for Containers",
+     "Implement and configure security controls for Azure Kubernetes Service (AKS)",
+     "Implement and configure security controls for Azure Container Registry",
+     "Implement and configure security controls for Azure Container Instances and Azure Container Apps",
+     "Implement and configure security controls for Azure Functions, including authentication and network access",
+     "Implement and configure security controls for Azure Logic Apps",
+     "Implement and configure security controls for Azure App Service",
+     "Implement and configure Azure Web Application Firewall",
+     "Implement security policies for back-end API protection by using API Management"
+    ]
+   },
+   {
+    "id": "s10",
+    "d": 4,
+    "title": "Security posture with Defender for Cloud",
+    "obj": [
+     "Identify security risks by using Defender CSPM",
+     "Evaluate compliance against security frameworks by using Defender for Cloud",
+     "Enable and configure Defender for Cloud workload protection plans",
+     "Connect hybrid cloud and multicloud environments to Defender for Cloud, including Amazon Web Services (AWS) and Google Cloud Platform (GCP)",
+     "Configure Microsoft Defender Vulnerability Management settings for Azure VMs",
+     "Discover unprotected assets and vulnerabilities by using Microsoft Defender External Attack Surface Management (EASM)"
+    ]
+   },
+   {
+    "id": "s11",
+    "d": 4,
+    "title": "Event collection in Microsoft Sentinel",
+    "obj": [
+     "Create and connect workspaces in Microsoft Sentinel",
+     "Assign roles in Microsoft Sentinel",
+     "Implement and use content hub solutions",
+     "Configure and use Microsoft data connectors for Azure resources",
+     "Implement and configure syslog and Common Event Format (CEF) event collections",
+     "Implement and configure collection of Windows Security events by using data collection rules, including Windows Event Forwarding (WEF)",
+     "Create custom log tables in the workspace to store ingested data",
+     "Implement automation rules and playbooks in Microsoft Sentinel",
+     "Implement data retention in Microsoft Sentinel data stores",
+     "Query Microsoft Purview Audit in Defender XDR"
+    ]
+   },
+   {
+    "id": "s12",
+    "d": 4,
+    "title": "Microsoft Security Copilot",
+    "obj": [
+     "Configure workspaces for Security Copilot",
+     "Manage permissions and roles in Security Copilot",
+     "Enable and configure plugins",
+     "Enable and configure Microsoft agents and Security Store agents"
+    ]
+   }
+  ]
+ }
+}
