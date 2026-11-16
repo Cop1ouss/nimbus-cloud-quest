@@ -10,7 +10,7 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 | --- | --- | --- |
 | AZ-900 | Built (v31) | 172 cards, 212 questions, 91 duels, 12 stops, 40-level Cloud Clash |
 | SC-900 | Built (v28) | 112 cards, 102 questions, 46 duels, 14 stops. Questions not yet checked against a Microsoft practice assessment |
-| AZ-104 | Locked entry only | Outline ready in `content/outlines.json`: 5 domains, 15 stops |
+| AZ-104 | Built (v32) | 137 cards, 130 questions, 59 duels, 15 stops, 3 new 3D models. Not yet checked against a Microsoft practice assessment |
 | SC-500 | Locked entry only | Outline ready in `content/outlines.json`: 4 domains, 12 stops |
 
 - Live site: https://cop1ouss.github.io/nimbus-cloud-quest/ (GitHub Pages, `main`, root).

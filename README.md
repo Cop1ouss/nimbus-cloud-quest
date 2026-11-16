@@ -10,7 +10,7 @@
   <a href="https://github.com/Cop1ouss/nimbus-cloud-quest/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/actions/workflow/status/Cop1ouss/nimbus-cloud-quest/ci.yml?style=flat-square&label=CI&labelColor=1e1e2e&color=a6e3a1"></a>
   <a href="https://github.com/Cop1ouss/nimbus-cloud-quest/actions/workflows/codeql.yml"><img alt="CodeQL" src="https://img.shields.io/github/actions/workflow/status/Cop1ouss/nimbus-cloud-quest/codeql.yml?style=flat-square&label=CodeQL&labelColor=1e1e2e&color=89b4fa"></a>
   <a href="SECURITY.md"><img alt="Security policy" src="https://img.shields.io/badge/security-policy-f38ba8?style=flat-square&labelColor=1e1e2e"></a>
-  <img alt="exams: AZ-900 and SC-900" src="https://img.shields.io/badge/exams-AZ--900%20%C2%B7%20SC--900-cba6f7?style=flat-square&labelColor=1e1e2e">
+  <img alt="exams: AZ-900, SC-900 and AZ-104" src="https://img.shields.io/badge/exams-AZ--900%20%C2%B7%20SC--900%20%C2%B7%20AZ--104-cba6f7?style=flat-square&labelColor=1e1e2e">
   <img alt="phone first: add to home screen" src="https://img.shields.io/badge/phone%20first-add%20to%20home%20screen-a6e3a1?style=flat-square&labelColor=1e1e2e">
   <img alt="build: none" src="https://img.shields.io/badge/build-none-a6e3a1?style=flat-square&labelColor=1e1e2e">
 </p>
@@ -24,7 +24,7 @@ A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-
 
 **How it works**
 
-- **Codex:** every exam objective as a stop on a map, with notes, traps to avoid, and **interactive 3D models** you can turn and tap: defense in depth, Zero Trust, shared responsibility, the Azure management hierarchy, regions and zones, virtual networks, Conditional Access and Defender XDR.
+- **Codex:** every exam objective as a stop on a map, with notes, traps to avoid, and **interactive 3D models** you can turn and tap: defense in depth, Zero Trust, shared responsibility, the Azure management hierarchy, regions and zones, virtual networks, Conditional Access, Defender XDR, NSG rule evaluation, hub and spoke, and Load Balancer vs Application Gateway.
 - **Deck:** spaced-repetition flashcards that flip back, rated Again, Shaky, Good or Easy.
 - **Arena:** training quizzes (including Choose 2, Yes/No and match questions), "Which one?" duels for look-alike services, and **3D boss battles** at easy, medium and hard.
 - **Mock exams:** timed and weighted by domain like the real exam.
@@ -51,7 +51,7 @@ Progress is stored in your browser's `localStorage` on each device. Nothing is s
 | `src/app.js` | The whole app: Codex, Deck, Arena, bosses, mocks, Cloud Clash and the 3D models |
 | `src/data_packs.json` | All content: AZ-900, SC-900 and AZ-104 cards, questions, duels, Codex stops and the Cloud Clash campaign |
 | `content/` | Scripts that generate content into `src/data_packs.json`: the Cloud Clash worlds, the SC-900 pack and the AZ-104 pack |
-| `tests/` | Playwright checks: regressions, a 40-level campaign bot, backup and restore, accessibility, SC-900 and 3D models |
+| `tests/` | Playwright checks: regressions, a 40-level campaign bot, backup and restore, accessibility, SC-900, AZ-104 and 3D models |
 | `docs/` | PRD, Build Protocol and the game design doc |
 
 ```bash

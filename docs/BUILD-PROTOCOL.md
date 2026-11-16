@@ -5,7 +5,7 @@
 | 1 Define | Amethyst | Done |
 | 2 Plan | Sapphire | Done |
 | 3 Build | Onyx | Worlds 1–4 done |
-| 4 Ship | Ruby | v31 live on GitHub Pages |
+| 4 Ship | Ruby | v32 live on GitHub Pages |
 | 5 Maintain | Emerald | Ongoing |
 
 ## 1 · Define (Amethyst)

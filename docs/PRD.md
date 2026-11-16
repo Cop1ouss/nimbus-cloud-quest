@@ -1,6 +1,6 @@
 # PRD — Nimbus: Cloud Clash (Campaign mode)
 
-**Owner:** Dajoni Gomez · **Status:** Full game loop shipped (v30, live on GitHub Pages) · **Updated:** Nov 14, 2026
+**Owner:** Dajoni Gomez · **Status:** Full game loop shipped (v32, live on GitHub Pages) · **Updated:** Nov 16, 2026
 
 ## Problem
 
