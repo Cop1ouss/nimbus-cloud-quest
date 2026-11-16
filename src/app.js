@@ -491,7 +491,7 @@ var TREE=[
   {c:'SC-100',n:'Cybersecurity Architect Expert',t:'Zero trust, governance, infrastructure, data design. Needs one of SC-300, SC-200 or SC-500 first, then the SC-100 exam.'}]}];
 var ROADS=[['SOC / blue team','SC-900 (optional) → SC-200 → SC-100'],['Identity and access','SC-900 (optional) → SC-300 → SC-100'],['Cloud security (yours)','AZ-900 → SC-900 → AZ-104 → SC-500 → SC-100']];
 function renderTree(){
-  var h='<h3 style="margin-top:22px">Security certification map</h3><p class="sub small">Your route is marked 1 to 4. '+ORDER.filter(function(i){return PACKS[i]}).map(function(i){return PACKS[i].meta.code}).join(' and ')+' have study content so far.</p>';
+  var h='<h3 style="margin-top:22px">Security certification map</h3><p class="sub small">Your route is marked 1 to 4. '+(PLANNED.length?ORDER.filter(function(i){return PACKS[i]}).map(function(i){return PACKS[i].meta.code}).join(', ')+' have study content so far.':'All four exams have study content.')+'</p>';
   TREE.forEach(function(g){h+='<div class="small mute" style="font-weight:800;letter-spacing:.6px;text-transform:uppercase;margin:14px 0 6px">'+esc(g.l)+'</div>';
     g.i.forEach(function(x){var built=x.id&&PACKS[x.id];
       h+='<div class="panel" style="padding:12px 14px;margin:0 0 8px'+(x.r?';border-color:var(--acc)':'')+'"><div class="row" style="justify-content:space-between;flex-wrap:nowrap;gap:8px"><b>'+esc(x.c)+' · '+esc(x.n)+'</b>'+(x.r?'<span class="tag" style="--c:var(--acc);flex:0 0 auto">Your path '+x.r+'</span>':'')+'</div><p class="small sub" style="margin:6px 0 0">'+esc(x.t)+'</p><p class="small mute" style="margin:4px 0 0">'+(built?'Study content ready':'No study content yet')+'</p></div>'})});

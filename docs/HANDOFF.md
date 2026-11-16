@@ -1,8 +1,8 @@
-# Handoff plan: AZ-104 and SC-500 packs
+# Handoff plan: what is built and what is next
 
 **For:** the next model working on Nimbus (Opus 5.5) · **Written:** Nov 16, 2026 · **Owner:** Dajoni Gomez
 
-This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-104 → SC-500**. AZ-900, SC-900 and AZ-104 are built (AZ-104 in v32, `content/az104/`). SC-500 shows in the app as a locked entry and has no content yet. Everything needed to build them is in this repo.
+This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-104 → SC-500**. All four packs are built: AZ-104 in v32 (`content/az104/`) and SC-500 in v34 (`content/sc500/`). The steps below are kept as the recipe for adding or rebuilding a pack. What is left is the backlog at the end.
 
 ## Where things stand
 
@@ -11,7 +11,7 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 | AZ-900 | Built (v31) | 172 cards, 212 questions, 91 duels, 12 stops, 40-level Cloud Clash |
 | SC-900 | Built (v28) | 112 cards, 102 questions, 46 duels, 14 stops. Questions not yet checked against a Microsoft practice assessment |
 | AZ-104 | Built (v32) | 137 cards, 130 questions, 59 duels, 15 stops, 3 new 3D models. Not yet checked against a Microsoft practice assessment |
-| SC-500 | Locked entry only | Outline ready in `content/outlines.json`: 4 domains, 12 stops |
+| SC-500 | Built (v34) | 105 cards, 100 questions, 52 duels, 12 stops. Security for AI and other new areas checked on Learn; the PRD lists what was not re-checked. No practice assessment link yet |
 
 - Live site: https://cop1ouss.github.io/nimbus-cloud-quest/ (GitHub Pages, `main`, root).
 - Claude artifact: https://claude.ai/artifact/PoB3gf2GAtn86ZcK5hRMyy (same app; has cloud sync and Ask Nimbo).
@@ -58,6 +58,8 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 - **Git:** commit as `Claude <noreply@anthropic.com>` or GitHub marks commits Unverified. Claude cannot enable Pages or create repos; Dajoni does that.
 
 ## Backlog after the packs
+
+0. SC-500 follow-ups: verify the not-re-checked items listed in the PRD (v34), swap `msUrl` for the real practice assessment when Microsoft publishes it, and add 3D models (PIM activation, Key Vault access, Sentinel pipeline).
 
 1. Check SC-900 (then AZ-104, SC-500) questions against the new practice assessments on AI Skills Navigator and fix weak spots.
 2. Microsoft Learn unit links per stop for SC-900, AZ-104 and SC-500 (`units`).

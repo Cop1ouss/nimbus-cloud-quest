@@ -5,7 +5,7 @@
 | 1 Define | Amethyst | Done |
 | 2 Plan | Sapphire | Done |
 | 3 Build | Onyx | Worlds 1–4 done |
-| 4 Ship | Ruby | v33 live on GitHub Pages |
+| 4 Ship | Ruby | v34 live on GitHub Pages |
 | 5 Maintain | Emerald | Ongoing |
 
 ## 1 · Define (Amethyst)
@@ -48,10 +48,11 @@
 - [x] v31: AZ-900 crunch pack (58 questions, 16 cards, 14 duels) checked against the July 20, 2026 outline.
 - [x] v32: AZ-104 pack (15 stops, 137 cards, 130 questions, 59 duels, 15 bosses, mocks), fifth domain colour, three new 3D models (NSG evaluation, hub and spoke, Load Balancer vs Application Gateway).
 - [x] v33: UI polish. Pop-up messages moved to the top on phones, exam weights shown as domain chips in the Codex, 3D model labels always face you, Ready to book checklist with a progress bar, last shadows removed.
+- [x] v34: SC-500 pack (12 stops, 105 cards, 100 questions, 52 duels, 12 bosses, mocks). All four certs on the route now have content.
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
-- [ ] SC-500 pack: outline in `content/outlines.json`, plan in `docs/HANDOFF.md`.
+- [ ] SC-500: re-check the outline before the exam, verify the items the PRD lists as not re-checked, add the practice assessment link when it exists, and add 3D models (PIM, Key Vault, Sentinel pipeline).
 - [ ] AZ-104: check against the AI Skills Navigator practice assessment.
 - [ ] Retune enemy HP from real play.
 - [ ] Check SC-900 questions against the new practice assessments on AI Skills Navigator.

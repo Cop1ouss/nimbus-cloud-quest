@@ -78,6 +78,19 @@ with sync_playwright() as p:
     pg.locator('#view [data-act="mock:full"]').first.click() if pg.locator('#view [data-act="mock:full"]').count() else None
     pg.wait_for_timeout(400);assert pg.locator('[data-act^="opt:"]').count()>0 or pg.locator('[data-act^="yn:"],[data-act^="m:"]').count()>=0
     play()
+    # SC-500 pack: 4 domains, 12 stops, no planned certs left
+    pg.evaluate("location.hash='certs'");pg.wait_for_timeout(300);pg.screenshot(path=SP+'/certs_all.png');pg.click('[data-act="cert:sc500"]');pg.wait_for_timeout(400)
+    assert pg.inner_text('#bq').upper()=='SC-500 QUEST'
+    for t in ('home','learn','cards','play','me'):
+        pg.click('nav [data-tab=%s]'%t);pg.wait_for_timeout(250);pg.screenshot(path='%s/sc500_%s.png'%(SP,t))
+        assert pg.evaluate("document.documentElement.scrollWidth")<=390,t
+    for s in range(1,13):
+        pg.evaluate("location.hash='learn/s%d'"%s);pg.wait_for_timeout(120);assert pg.locator('h1').count()>=1,s
+    pg.evaluate("location.hash='learn/s6'");pg.wait_for_timeout(300);assert pg.locator('.m3w').count()==2
+    play();pg.locator('#view [data-act^="boss:3"]').first.click();pg.wait_for_timeout(500)
+    o=pg.locator('[data-act^="opt:"]');assert o.count()>0;o.first.click();pg.wait_for_timeout(200)
+    play();pg.locator('#view [data-act="mock:hard"]').first.click();pg.wait_for_timeout(500);pg.screenshot(path=SP+'/sc500_hard.png')
+    play()
     # switch back, AZ progress intact, reload keeps cert
     pg.evaluate("location.hash='certs'");pg.wait_for_timeout(300);pg.click('[data-act="cert:az900"]');pg.wait_for_timeout(300)
     assert pg.inner_text('#bq').upper()=='AZ-900 QUEST';pg.click('nav [data-tab=play]');pg.wait_for_timeout(300);assert pg.locator('.campcta').count()==1
