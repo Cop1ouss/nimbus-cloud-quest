@@ -125,7 +125,9 @@ details .in{padding:0 14px 12px}
 .bdg .e{font-size:28px;display:block}.bdg.lock{border-style:dashed;color:var(--mute)}
 .chk{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line)}
 .chk:first-of-type{border-top:0}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(100px + env(safe-area-inset-bottom,0px));z-index:9;background:var(--xp);color:var(--on);font-weight:800;padding:10px 18px;border-radius:99px;max-width:calc(100% - 32px);text-align:center;box-shadow:0 6px 22px rgba(0,0,0,.35);animation:pop .25s}
+.chk b{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;line-height:1;margin-top:2px}.chk b.done{background:var(--ok);border-color:var(--ok);color:var(--on)}
+.wts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.wt{border:2px solid var(--c);border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700}.wt b{color:var(--c)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(84px + env(safe-area-inset-top,0px));z-index:9;background:var(--xp);color:var(--on);font-weight:800;padding:10px 18px;border-radius:99px;max-width:calc(100% - 32px);text-align:center;border:2px solid var(--bg);animation:pop .25s}
 @keyframes pop{from{transform:translate(-50%,10px);opacity:0}}
 textarea,input[type=number],input[type=date],select{width:100%;background:var(--bg2);color:var(--text);border:2px solid var(--line);border-radius:12px;padding:10px;font:inherit;min-height:46px}
 .center{text-align:center}
@@ -167,7 +169,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root:not([data-layout="phone"]) .hintd{display:block;margin-top:18px}
 :root:not([data-layout="phone"]) .chatbar{left:228px;padding-left:32px;padding-right:32px}
 :root:not([data-layout="phone"]) .chatbar textarea,:root:not([data-layout="phone"]) .chatbar .btn{max-width:none}
-:root:not([data-layout="phone"]) .toast{left:calc(50% + 114px);bottom:32px}
+:root:not([data-layout="phone"]) .toast{left:calc(50% + 114px);top:auto;bottom:32px}
 :root:not([data-layout="phone"]) .fc{min-height:300px;font-size:24px}
 :root:not([data-layout="phone"]) .fc.back{font-size:21px}
 }
@@ -187,7 +189,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root[data-layout="desktop"] .hintd{display:block;margin-top:18px}
 :root[data-layout="desktop"] .chatbar{left:228px;padding-left:32px;padding-right:32px}
 :root[data-layout="desktop"] .chatbar textarea,:root[data-layout="desktop"] .chatbar .btn{max-width:none}
-:root[data-layout="desktop"] .toast{left:calc(50% + 114px);bottom:32px}
+:root[data-layout="desktop"] .toast{left:calc(50% + 114px);top:auto;bottom:32px}
 :root[data-layout="desktop"] .fc{min-height:300px;font-size:24px}
 :root[data-layout="desktop"] .fc.back{font-size:21px}
 @media (max-width:499px){#pLayout{display:none}}
@@ -224,14 +226,14 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 .recallIn:focus{outline:none;border-color:var(--acc)}
 .tog{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);padding:10px 12px;margin:10px 0;font:inherit;cursor:pointer}
 .tog .sw{flex:0 0 46px;height:28px;border-radius:99px;background:var(--line);position:relative;transition:background .2s}
-.tog .sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.tog .sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s}
 .tog[aria-pressed="true"] .sw{background:var(--ok)}.tog[aria-pressed="true"] .sw:after{transform:translateX(18px)}
 /* 3D flashcard */
 .fc3{perspective:1200px;background:none;border:0;padding:0;min-height:0;display:block;margin:0 0 14px;cursor:pointer;outline:none}
 .fc3 .fcin{display:grid;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.25,1.15)}
 .fc3.noanim .fcin{transition:none}
 .fc3.flipped .fcin{transform:rotateY(180deg)}
-.fc3 .face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 18px;border-radius:20px;border:2px solid var(--c,var(--line));background:var(--card);box-shadow:0 14px 30px -12px rgba(0,0,0,.35)}
+.fc3 .face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 18px;border-radius:20px;border:2px solid var(--c,var(--line));background:var(--card);}
 .fc3 .face.back{transform:rotateY(180deg);background:var(--bg2)}
 .fc3:focus-visible .face{outline:3px solid var(--acc);outline-offset:2px}
 :root:not([data-layout="phone"]) .fc3 .face{min-height:300px}
@@ -358,6 +360,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 .m3w{margin:12px 0}.m3d{height:310px;display:flex;align-items:center;justify-content:center;perspective:1100px;touch-action:pan-y;cursor:grab;overflow:hidden;user-select:none;-webkit-user-select:none}
 .m3s{position:relative;flex:0 0 240px;width:240px;height:240px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(var(--rz)) translateZ(-70px);transition:transform .3s}.m3d.drag{cursor:grabbing}.m3d.drag .m3s{transition:none}
 .bx{--k:var(--c);position:absolute;transform-style:preserve-3d;transform:translateZ(calc(var(--z) + var(--lv)*var(--ex)));transition:transform .35s;background:var(--k);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#232634;text-align:center;line-height:1.15;cursor:pointer}
+.bx>span{display:block;transform:rotateZ(calc(-1*var(--rz,0deg)));pointer-events:none}
 .bx i{position:absolute;display:flex;align-items:center;justify-content:center;font-style:normal;overflow:hidden;white-space:nowrap}
 .bx .f{left:0;top:100%;width:100%;height:var(--h);transform-origin:top;transform:rotateX(-90deg);background:color-mix(in srgb,var(--k) 80%,#232634)}
 .bx .b{left:0;bottom:100%;width:100%;height:var(--h);transform-origin:bottom;transform:rotateX(90deg);background:color-mix(in srgb,var(--k) 58%,#232634)}
@@ -660,7 +663,7 @@ function checklist(){
 
 function renderLearn(){
   if(sub){var s=secBy(sub);if(s)return renderSection(s)}
-  var h='<h2 style="margin-top:16px">Codex</h2><p class="sub small">The whole '+META.code+' course in '+SECS.length+' stops. Exam weights: '+DOMS.map(function(d){return DN[d]+' '+META.weights[d]}).join(', ')+'. Stars: read it, 60% of its cards mastered, 80% quiz accuracy.</p>';
+  var h='<h2 style="margin-top:16px">Codex</h2><p class="sub small">The whole '+META.code+' course in '+SECS.length+' stops. Stars: read it, 60% of its cards mastered, 80% quiz accuracy.</p><div class="wts" role="list" aria-label="Exam weights">'+DOMS.map(function(d){return '<span class="wt d'+d+'" role="listitem"><b>D'+d+'</b> '+esc(META.weights[d])+'</span>'}).join('')+'</div>';
   DOMS.forEach(function(d){h+='<h3 class="d'+d+'" style="color:var(--c);margin-top:18px">Domain '+d+': '+DN[d]+'</h3>';
     SECS.filter(function(s){return s.d===d}).forEach(function(s){var t=secStars(s),i=SECS.indexOf(s)+1;
       h+='<button class="node d'+d+'" type="button" data-act="open:'+s.id+'"><span class="num">'+i+'</span><span><b>'+esc(s.title)+'</b><br><span class="small mute">'+esc(s.label||'')+(t.weak?' · has weak spots':'')+(s.models?' · 3D model':'')+'</span></span><span class="stars">'+stars(s)+'</span></button>'})});
@@ -923,7 +926,7 @@ function syncTest(){
 function renderMe(){var l=level(state.xp);
   var h='<div class="panel hero" style="margin-top:16px"><div>'+nimbo('happy',l>=7)+'</div><div><h2 style="margin:0">'+esc(TITLES[l])+'</h2><p class="sub" style="margin:4px 0 0">Level '+(l+1)+' · '+state.xp+' XP</p><p class="small mute" style="margin:2px 0 0">Best streak counts days with 30+ XP.</p></div></div>';
   var r=readiness();
-  h+='<div class="panel"><h2>Ready to book?</h2>'+r.items.map(function(i){return '<div class="chk"><b class="'+(i.ok?'done':'mute')+'">'+(i.ok?'✓':'○')+'</b><span>'+esc(i.t)+'</span></div>'}).join('')+'<p class="small mute" style="margin:8px 0 0">All five done means go ahead and book.</p></div>'+objPanel();
+  h+='<div class="panel"><h2>Ready to book?</h2><p class="small sub" style="margin:0 0 4px">'+r.items.filter(function(i){return i.ok}).length+' of '+r.items.length+' done</p><div class="bar" style="margin-bottom:8px"><i style="width:'+Math.round(100*r.items.filter(function(i){return i.ok}).length/r.items.length)+'%;background:var(--ok)"></i></div>'+r.items.map(function(i){return '<div class="chk"><b class="'+(i.ok?'done':'mute')+'">'+(i.ok?'✓':'')+'</b><span>'+esc(i.t)+'</span></div>'}).join('')+'<p class="small mute" style="margin:8px 0 0">All five done means go ahead and book.</p></div>'+objPanel();
   h+='<div class="panel"><h2>Score history</h2>'+histChart()+'<p class="small sub" style="margin:0 0 8px">Took Microsoft\u2019s own practice test? <a href="'+META.msUrl+'" target="_blank" rel="noopener" style="color:var(--acc);font-weight:800">Open it \u2197</a> and log the score here.</p><form id="logForm" class="row" style="margin-top:12px"><input id="logPct" type="number" min="0" max="100" inputmode="numeric" placeholder="Microsoft practice %" aria-label="Microsoft practice test score" style="flex:1 1 150px"><button class="btn pri" type="submit">Log score</button></form></div>';
   h+='<div class="panel"><h2>Badges ('+BADGES.filter(function(b){return state.badges[b[0]]}).length+'/'+BADGES.length+')</h2><div class="badges">'+BADGES.map(function(b){var on=!!state.badges[b[0]];return '<div class="bdg'+(on?'':' lock')+'"><span class="e">'+hexBadge(b[0])+'</span>'+esc(b[2])+'<br><span class="mute" style="font-weight:600">'+esc(b[3])+'</span></div>'}).join('')+'</div></div>';
   h+='<div class="panel"><h2>Exam dates</h2><label class="small mute" for="examDate">Exam date</label><input id="examDate" type="date" value="'+esc(state.exam||'')+'" aria-label="Exam date"><label class="small mute" for="vDate" style="display:block;margin-top:10px">Voucher deadline (optional)</label><input id="vDate" type="date" value="'+esc(state.voucher||'')+'" aria-label="Voucher deadline">'+(voucherNote()?'<p class="small" style="margin:8px 0 0;font-weight:800;color:var(--xp)">'+esc(voucherNote())+'</p>':'')+'</div>';

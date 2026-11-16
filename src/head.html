@@ -112,7 +112,9 @@ details .in{padding:0 14px 12px}
 .bdg .e{font-size:28px;display:block}.bdg.lock{border-style:dashed;color:var(--mute)}
 .chk{display:grid;grid-template-columns:28px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line)}
 .chk:first-of-type{border-top:0}
-.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(100px + env(safe-area-inset-bottom,0px));z-index:9;background:var(--xp);color:var(--on);font-weight:800;padding:10px 18px;border-radius:99px;max-width:calc(100% - 32px);text-align:center;box-shadow:0 6px 22px rgba(0,0,0,.35);animation:pop .25s}
+.chk b{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;line-height:1;margin-top:2px}.chk b.done{background:var(--ok);border-color:var(--ok);color:var(--on)}
+.wts{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.wt{border:2px solid var(--c);border-radius:99px;padding:3px 10px;font-size:12px;font-weight:700}.wt b{color:var(--c)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(84px + env(safe-area-inset-top,0px));z-index:9;background:var(--xp);color:var(--on);font-weight:800;padding:10px 18px;border-radius:99px;max-width:calc(100% - 32px);text-align:center;border:2px solid var(--bg);animation:pop .25s}
 @keyframes pop{from{transform:translate(-50%,10px);opacity:0}}
 textarea,input[type=number],input[type=date],select{width:100%;background:var(--bg2);color:var(--text);border:2px solid var(--line);border-radius:12px;padding:10px;font:inherit;min-height:46px}
 .center{text-align:center}
@@ -154,7 +156,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root:not([data-layout="phone"]) .hintd{display:block;margin-top:18px}
 :root:not([data-layout="phone"]) .chatbar{left:228px;padding-left:32px;padding-right:32px}
 :root:not([data-layout="phone"]) .chatbar textarea,:root:not([data-layout="phone"]) .chatbar .btn{max-width:none}
-:root:not([data-layout="phone"]) .toast{left:calc(50% + 114px);bottom:32px}
+:root:not([data-layout="phone"]) .toast{left:calc(50% + 114px);top:auto;bottom:32px}
 :root:not([data-layout="phone"]) .fc{min-height:300px;font-size:24px}
 :root:not([data-layout="phone"]) .fc.back{font-size:21px}
 }
@@ -174,7 +176,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 :root[data-layout="desktop"] .hintd{display:block;margin-top:18px}
 :root[data-layout="desktop"] .chatbar{left:228px;padding-left:32px;padding-right:32px}
 :root[data-layout="desktop"] .chatbar textarea,:root[data-layout="desktop"] .chatbar .btn{max-width:none}
-:root[data-layout="desktop"] .toast{left:calc(50% + 114px);bottom:32px}
+:root[data-layout="desktop"] .toast{left:calc(50% + 114px);top:auto;bottom:32px}
 :root[data-layout="desktop"] .fc{min-height:300px;font-size:24px}
 :root[data-layout="desktop"] .fc.back{font-size:21px}
 @media (max-width:499px){#pLayout{display:none}}
@@ -211,14 +213,14 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 .recallIn:focus{outline:none;border-color:var(--acc)}
 .tog{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:2px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);padding:10px 12px;margin:10px 0;font:inherit;cursor:pointer}
 .tog .sw{flex:0 0 46px;height:28px;border-radius:99px;background:var(--line);position:relative;transition:background .2s}
-.tog .sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.tog .sw:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s}
 .tog[aria-pressed="true"] .sw{background:var(--ok)}.tog[aria-pressed="true"] .sw:after{transform:translateX(18px)}
 /* 3D flashcard */
 .fc3{perspective:1200px;background:none;border:0;padding:0;min-height:0;display:block;margin:0 0 14px;cursor:pointer;outline:none}
 .fc3 .fcin{display:grid;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.8,.25,1.15)}
 .fc3.noanim .fcin{transition:none}
 .fc3.flipped .fcin{transform:rotateY(180deg)}
-.fc3 .face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 18px;border-radius:20px;border:2px solid var(--c,var(--line));background:var(--card);box-shadow:0 14px 30px -12px rgba(0,0,0,.35)}
+.fc3 .face{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:240px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:24px 18px;border-radius:20px;border:2px solid var(--c,var(--line));background:var(--card);}
 .fc3 .face.back{transform:rotateY(180deg);background:var(--bg2)}
 .fc3:focus-visible .face{outline:3px solid var(--acc);outline-offset:2px}
 :root:not([data-layout="phone"]) .fc3 .face{min-height:300px}
@@ -345,6 +347,7 @@ textarea,input[type=number],input[type=date],select{width:100%;background:var(--
 .m3w{margin:12px 0}.m3d{height:310px;display:flex;align-items:center;justify-content:center;perspective:1100px;touch-action:pan-y;cursor:grab;overflow:hidden;user-select:none;-webkit-user-select:none}
 .m3s{position:relative;flex:0 0 240px;width:240px;height:240px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(var(--rz)) translateZ(-70px);transition:transform .3s}.m3d.drag{cursor:grabbing}.m3d.drag .m3s{transition:none}
 .bx{--k:var(--c);position:absolute;transform-style:preserve-3d;transform:translateZ(calc(var(--z) + var(--lv)*var(--ex)));transition:transform .35s;background:var(--k);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#232634;text-align:center;line-height:1.15;cursor:pointer}
+.bx>span{display:block;transform:rotateZ(calc(-1*var(--rz,0deg)));pointer-events:none}
 .bx i{position:absolute;display:flex;align-items:center;justify-content:center;font-style:normal;overflow:hidden;white-space:nowrap}
 .bx .f{left:0;top:100%;width:100%;height:var(--h);transform-origin:top;transform:rotateX(-90deg);background:color-mix(in srgb,var(--k) 80%,#232634)}
 .bx .b{left:0;bottom:100%;width:100%;height:var(--h);transform-origin:bottom;transform:rotateX(90deg);background:color-mix(in srgb,var(--k) 58%,#232634)}

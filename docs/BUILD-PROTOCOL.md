@@ -5,7 +5,7 @@
 | 1 Define | Amethyst | Done |
 | 2 Plan | Sapphire | Done |
 | 3 Build | Onyx | Worlds 1–4 done |
-| 4 Ship | Ruby | v32 live on GitHub Pages |
+| 4 Ship | Ruby | v33 live on GitHub Pages |
 | 5 Maintain | Emerald | Ongoing |
 
 ## 1 · Define (Amethyst)
@@ -47,6 +47,7 @@
 - [x] v30: Hex prompt logo, GitHub Pages site with home-screen icon, full source in the repo with a build check in CI.
 - [x] v31: AZ-900 crunch pack (58 questions, 16 cards, 14 duels) checked against the July 20, 2026 outline.
 - [x] v32: AZ-104 pack (15 stops, 137 cards, 130 questions, 59 duels, 15 bosses, mocks), fifth domain colour, three new 3D models (NSG evaluation, hub and spoke, Load Balancer vs Application Gateway).
+- [x] v33: UI polish. Pop-up messages moved to the top on phones, exam weights shown as domain chips in the Codex, 3D model labels always face you, Ready to book checklist with a progress bar, last shadows removed.
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
