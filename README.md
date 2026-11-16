@@ -20,7 +20,7 @@
   <a href="https://cop1ouss.github.io/nimbus-cloud-quest/"><img alt="The 3D Azure hierarchy model on a phone" src="assets/screenshot-phone.png" width="22%"></a>
 </p>
 
-A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-104 → SC-500**. AZ-900 (Azure Fundamentals) and SC-900 (Security, Compliance, and Identity Fundamentals) have content now. Later exams are added as I pass each one. The whole app is one `index.html` with no build step, no backend and no dependencies.
+A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-104 → SC-500**. AZ-900 (Azure Fundamentals), SC-900 (Security, Compliance, and Identity Fundamentals) and AZ-104 (Azure Administrator) have content now. Later exams are added as I pass each one. The whole app is one `index.html` with no build step, no backend and no dependencies.
 
 **How it works**
 
@@ -49,8 +49,8 @@ Progress is stored in your browser's `localStorage` on each device. Nothing is s
 | --- | --- |
 | `src/head.html` | Styles (Catppuccin Frappé and Latte tokens), the page shell and the header logo |
 | `src/app.js` | The whole app: Codex, Deck, Arena, bosses, mocks, Cloud Clash and the 3D models |
-| `src/data_packs.json` | All content: AZ-900 and SC-900 cards, questions, duels, Codex stops and the Cloud Clash campaign |
-| `content/` | Scripts that generate content into `src/data_packs.json`: the Cloud Clash worlds and the SC-900 pack |
+| `src/data_packs.json` | All content: AZ-900, SC-900 and AZ-104 cards, questions, duels, Codex stops and the Cloud Clash campaign |
+| `content/` | Scripts that generate content into `src/data_packs.json`: the Cloud Clash worlds, the SC-900 pack and the AZ-104 pack |
 | `tests/` | Playwright checks: regressions, a 40-level campaign bot, backup and restore, accessibility, SC-900 and 3D models |
 | `docs/` | PRD, Build Protocol and the game design doc |
 
@@ -61,11 +61,21 @@ python3 build.py --icons            # redraw the app icons from the header logo 
 python3 content/camp_data.py        # regenerate Cloud Clash World 1 into src/data_packs.json
 python3 content/camp_data2.py       # regenerate Worlds 2 to 4
 (cd content/sc && python3 sc_build.py)   # regenerate the SC-900 pack
+(cd content/az104 && python3 az_build.py)   # regenerate the AZ-104 pack
 python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions and duels
 pip install playwright && python3 -m playwright install chromium
-python3 tests/t42.py                # SC-900 pack and 3D models smoke test
+python3 tests/t42.py out/          # SC-900, AZ-104 and 3D models smoke test
 npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Latte
 ```
+
+## Backlog
+
+- Check SC-900 questions against the new practice assessments
+- Microsoft Learn links per stop
+- A Cloud Clash world per cert
+- Offline support for the home-screen app
+- A review mode built from your missed questions
+- SC-500 pack (plan in `docs/HANDOFF.md`)
 
 ## Related
 
@@ -76,7 +86,7 @@ npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Lat
 
 | | |
 | --- | --- |
-| 🗺️ [Handoff plan](docs/HANDOFF.md) | What is built, and the plan for the AZ-104 and SC-500 packs |
+| 🗺️ [Handoff plan](docs/HANDOFF.md) | What is built, and the plan for the SC-500 pack |
 | 📋 [PRD](docs/PRD.md) | The problem, the goal, scope and the finish line |
 | 🧭 [Build Protocol](docs/BUILD-PROTOCOL.md) | The five gem phases and where the build stands |
 | 🛡️ [Security policy](SECURITY.md) | How to report a vulnerability privately |

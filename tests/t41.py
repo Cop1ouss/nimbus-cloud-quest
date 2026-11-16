@@ -30,6 +30,11 @@ with sync_playwright() as p:
         for t in ('home','learn','cards','play','me'):
             pg.click('nav [data-tab=%s]'%t);pg.wait_for_timeout(250);run(pg,th+':sc-'+t)
         pg.evaluate("location.hash='learn/s1'");pg.wait_for_timeout(300);run(pg,th+':sc-sec')
+        pg.evaluate("location.hash='certs'");pg.wait_for_timeout(300);pg.click('[data-act="cert:az104"]');pg.wait_for_timeout(400)
+        for t in ('home','learn','cards','play','me'):
+            pg.click('nav [data-tab=%s]'%t);pg.wait_for_timeout(250);run(pg,th+':az-'+t)
+        for sec in ('s12','s15'):
+            pg.evaluate("location.hash='learn/%s'"%sec);pg.wait_for_timeout(300);run(pg,th+':az-'+sec)
         pg.close()
     b.close()
 for k,v in sorted(out.items(),key=lambda x:str(x[0][1])):

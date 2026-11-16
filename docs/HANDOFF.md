@@ -2,7 +2,7 @@
 
 **For:** the next model working on Nimbus (Opus 5.5) · **Written:** Nov 16, 2026 · **Owner:** Dajoni Gomez
 
-This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-104 → SC-500**. AZ-900 and SC-900 are built. AZ-104 and SC-500 show in the app as locked entries and have no content yet. Everything needed to build them is in this repo.
+This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-104 → SC-500**. AZ-900, SC-900 and AZ-104 are built (AZ-104 in v32, `content/az104/`). SC-500 shows in the app as a locked entry and has no content yet. Everything needed to build them is in this repo.
 
 ## Where things stand
 

@@ -46,11 +46,17 @@
 - [x] v29: bosses rebuilt as 3D block figures. Hierarchy model rebuilt as nested containers. Four new structure models: shared responsibility, virtual network, Conditional Access, Defender XDR.
 - [x] v30: Hex prompt logo, GitHub Pages site with home-screen icon, full source in the repo with a build check in CI.
 - [x] v31: AZ-900 crunch pack (58 questions, 16 cards, 14 duels) checked against the July 20, 2026 outline.
+- [x] v32: AZ-104 pack (15 stops, 137 cards, 130 questions, 59 duels, 15 bosses, mocks), fifth domain colour, three new 3D models (NSG evaluation, hub and spoke, Load Balancer vs Application Gateway).
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
-- [ ] AZ-104 and SC-500 packs: outlines in `content/outlines.json`, plan in `docs/HANDOFF.md`.
+- [ ] SC-500 pack: outline in `content/outlines.json`, plan in `docs/HANDOFF.md`.
+- [ ] AZ-104: check against the AI Skills Navigator practice assessment.
 - [ ] Retune enemy HP from real play.
-- [ ] SC-900: add Microsoft Learn unit links per stop, and a Cloud Clash world if wanted.
+- [ ] Check SC-900 questions against the new practice assessments on AI Skills Navigator.
+- [ ] Microsoft Learn unit links per stop (SC-900, AZ-104, then SC-500).
+- [ ] A Cloud Clash world per cert (Cloud Clash is AZ-900 only today).
+- [ ] Offline support for the home-screen app (service worker).
+- [ ] A review mode built from your missed questions across quizzes, mocks and duels.
 - [ ] Add questions where topic pools are small (Shared responsibility, Cost model).
 - [ ] After each practice assessment, add duel pairs and campaign threats for the new mix-ups.

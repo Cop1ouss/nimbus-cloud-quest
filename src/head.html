@@ -9,12 +9,12 @@
    Type: Fredoka for headings and numbers, Nunito for reading. Bottom tab bar with safe-area padding. */
 :root{
   --bg:#303446;--bg2:#232634;--card:#292c3c;--line:#414559;--text:#c6d0f5;--sub:#b5bfe2;--mute:#a5adce;
-  --acc:#ca9ee6;--xp:#e5c890;--ok:#a6d189;--bad:#e78284;--warn:#ef9f76;--d1:#babbf1;--d2:#85c1dc;--d3:#81c8be;--d4:#f4b8e4;
+  --acc:#ca9ee6;--xp:#e5c890;--ok:#a6d189;--bad:#e78284;--warn:#ef9f76;--d1:#babbf1;--d2:#85c1dc;--d3:#81c8be;--d4:#f4b8e4;--d5:#ef9f76;
   --on:#232634;--cloud:#c6d0f5;--cloudln:#838ba7;
   --fh:"JetBrainsMono Nerd Font","JetBrainsMono NF","JetBrains Mono",ui-monospace,monospace;--fb:"JetBrainsMono Nerd Font","JetBrainsMono NF","JetBrains Mono",ui-monospace,monospace;color-scheme:dark}
 :root[data-theme="light"]{
   --bg:#eff1f5;--bg2:#e6e9ef;--card:#ffffff;--line:#ccd0da;--text:#4c4f69;--sub:#5c5f77;--mute:#5c5f77;
-  --acc:#8839ef;--xp:#9a5b00;--ok:#15803d;--bad:#c00e35;--warn:#b45309;--d1:#4655d0;--d2:#1a5ce0;--d3:#0f766e;--d4:#a8327f;
+  --acc:#8839ef;--xp:#9a5b00;--ok:#15803d;--bad:#c00e35;--warn:#b45309;--d1:#4655d0;--d2:#1a5ce0;--d3:#0f766e;--d4:#a8327f;--d5:#a8430a;
   --on:#ffffff;--cloud:#ffffff;--cloudln:#8c8fa1;color-scheme:light}
 *{box-sizing:border-box}
 html,body{min-height:100%}
@@ -53,7 +53,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--on)}
 .bar{height:10px;border-radius:99px;background:var(--bg2);border:1px solid var(--line);overflow:hidden}
 .bar i{display:block;height:100%;border-radius:99px;background:var(--acc)}
-.d1{--c:var(--d1)}.d2{--c:var(--d2)}.d3{--c:var(--d3)}.d4{--c:var(--d4)}
+.d1{--c:var(--d1)}.d2{--c:var(--d2)}.d3{--c:var(--d3)}.d4{--c:var(--d4)}.d5{--c:var(--d5)}
 .tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 9px;border-radius:99px;border:1.5px solid var(--c,var(--line));color:var(--c,var(--sub))}
 /* nav */
 nav{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--bg2);border-top:1px solid var(--line);

@@ -369,6 +369,39 @@ var MODELS=(function(){var M={};
    .concat(xp.map(function(p){return {id:p[0],n:p[4],c:FC[p[2]],t:p[3]}})),
   boxes:[['portal',0,0,0,240,240,14,0,'Defender portal'],['xdr',0,0,14,240,240,14,1,'Defender XDR: one incident']]
    .concat(xp.map(function(p,i){return [p[0],12+(i%3)*76,16+Math.floor(i/3)*112,28,64,96,60,3,p[1]]}))};
+ M.nsg={t:'NSG evaluation',s:'Inbound traffic meets the subnet NSG first, then the NIC NSG. In each, rules run from the lowest number up and the first match wins.',ex:12,
+  parts:[{id:'inet',n:'Inbound traffic',c:FC.sap,t:'A packet arrives with a source, destination, port and protocol. Outbound traffic runs the other way: NIC NSG first, then subnet NSG.'},
+   {id:'snsg',n:'Subnet NSG',c:FC.lav,t:'Checked first for inbound traffic. If it denies, the packet never reaches the NIC.'},
+   {id:'rule',n:'Custom rules',c:FC.yel,t:'Priority 100 to 4096. Lower number is checked first. The first rule that matches decides, and processing stops.'},
+   {id:'def',n:'Default rules',c:FC.red,t:'65000 AllowVNetInBound, 65001 AllowAzureLoadBalancerInBound, 65500 DenyAllInbound. You cannot delete them, only beat them with a lower number.'},
+   {id:'nicnsg',n:'NIC NSG',c:FC.mauve,t:'Checked second for inbound traffic. The packet must be allowed by both NSGs. Use Effective security rules or IP flow verify to see the result.'},
+   {id:'vm',n:'Virtual machine',c:FC.green,t:'Only traffic allowed by both layers gets here. NSGs are stateful, so the reply is let back out.'}],
+  boxes:[['inet',0,0,0,240,36,10,0,'Inbound traffic'],['snsg',0,44,0,240,196,10,1,'Subnet NSG'],
+   ['rule',10,54,10,66,54,16,2,'100 Deny 3389'],['rule',84,54,10,66,54,16,2,'200 Allow 443'],['def',158,54,10,72,54,16,2,'65500 DenyAll'],
+   ['nicnsg',30,122,10,180,108,10,2,'NIC NSG'],['vm',76,144,20,88,64,40,3,'VM']]};
+ M.hub={t:'Hub and spoke',s:'Spokes peer with the hub, not with each other. Peering is not transitive, so spoke-to-spoke traffic is routed through the firewall in the hub.',ex:14,
+  parts:[{id:'hubv',n:'Hub VNet',c:FC.lav,t:'Holds shared services: the firewall, the VPN or ExpressRoute gateway, Azure Bastion. Its peerings set Allow gateway transit.'},
+   {id:'fw',n:'Azure Firewall / NVA',c:FC.red,t:'Inspects traffic between spokes and to the internet. Spoke route tables send traffic here as the next hop (virtual appliance).'},
+   {id:'gw',n:'VPN gateway',c:FC.peach,t:'Connects to on-premises. Spokes reach it through gateway transit: hub allows it, spoke peering sets Use remote gateways.'},
+   {id:'spoke',n:'Spoke VNet',c:FC.blue,t:'One workload per spoke. Peered to the hub only. Address spaces must not overlap.'},
+   {id:'peer',n:'Peering',c:FC.mauve,t:'Private, low-latency link over the Microsoft backbone. Regional or global. Not transitive: spoke A to hub and hub to spoke B does not give A to B.'},
+   {id:'udr',n:'Route table (UDR)',c:FC.yel,t:'Associated to a spoke subnet. 0.0.0.0/0 or the other spoke ranges with next hop Virtual appliance = the firewall IP.'}],
+  boxes:[['hubv',84,84,0,72,72,10,0,'Hub VNet'],['fw',90,92,10,28,56,32,1,'Firewall'],['gw',124,92,10,26,56,24,1,'VPN gateway'],
+   ['spoke',0,0,0,64,64,10,0,'Spoke A'],['spoke',176,0,0,64,64,10,0,'Spoke B'],['spoke',0,176,0,64,64,10,0,'Spoke C'],
+   ['peer',62,62,0,24,24,6,1,'Peering'],['peer',154,62,0,24,24,6,1,'Peering'],['peer',62,154,0,24,24,6,1,'Peering'],
+   ['udr',10,10,10,44,44,14,2,'UDR to firewall'],['udr',186,10,10,44,44,14,2,'UDR to firewall']]};
+ M.lbag={t:'Load Balancer vs Application Gateway',s:'Both spread traffic over a backend pool and drop unhealthy backends using a health probe. Load Balancer sees ports. Application Gateway reads the HTTP request.',ex:12,
+  parts:[{id:'lb',n:'Azure Load Balancer',c:FC.sap,t:'Layer 4: TCP and UDP. Public or internal. Standard SKU is zone-redundant and closed until an NSG allows traffic.'},
+   {id:'rule',n:'Load-balancing rule',c:FC.yel,t:'Maps a frontend IP and port to the backend pool and port. Session persistence can pin a client by IP.'},
+   {id:'probe',n:'Health probe',c:FC.green,t:'TCP, HTTP or HTTPS check from 168.63.129.16. Backends that fail stop getting new traffic.'},
+   {id:'pool',n:'Backend pool',c:FC.blue,t:'The VMs or scale set instances that receive traffic. For Standard Load Balancer they sit in one VNet.'},
+   {id:'agw',n:'Application Gateway',c:FC.mauve,t:'Layer 7, regional, in its own subnet. Terminates TLS, routes by host name or URL path, cookie affinity.'},
+   {id:'waf',n:'Web Application Firewall',c:FC.red,t:'Optional on Application Gateway (WAF SKU). Blocks SQL injection, cross-site scripting and other OWASP attacks.'},
+   {id:'path',n:'Path rules',c:FC.peach,t:'/images goes to one pool, /api to another. Load Balancer cannot do this; it never reads the URL.'}],
+  boxes:[['lb',0,0,0,112,240,10,0,'Load Balancer (L4)'],['rule',10,10,10,92,40,14,1,'Rule: TCP 80'],['probe',10,58,10,92,30,14,1,'Probe'],
+   ['pool',10,140,10,40,90,36,2,'VM'],['pool',62,140,10,40,90,36,2,'VM'],
+   ['agw',128,0,0,112,240,10,0,'App Gateway (L7)'],['waf',138,10,10,92,30,18,1,'WAF'],['path',138,48,10,44,40,14,1,'/images'],['path',186,48,10,44,40,14,1,'/api'],
+   ['pool',138,140,10,40,90,36,2,'VM'],['pool',190,140,10,40,90,36,2,'VM']]};
  return M})();
 function bxHtml(b,c,cls,act,top,front){return '<div class="bx'+cls+'"'+(act?' data-act="'+act+'"':'')+' style="--c:'+c+';left:'+b[1]+'px;top:'+b[2]+'px;width:'+b[4]+'px;height:'+b[5]+'px;--z:'+(b[3]+b[6])+'px;--h:'+b[6]+'px;--lv:'+b[7]+'"><span>'+top+'</span><i class="f">'+front+'</i><i class="b"></i><i class="l"></i><i class="r"></i></div>'}
 function renderModel(id){var m=MODELS[id];if(!m)return '';var sel=M3.sel[id],p=m.parts.filter(function(x){return x.id===sel})[0],pc={};m.parts.forEach(function(x){pc[x.id]=x.c});
