@@ -184,5 +184,6 @@ assert len(DUELS)>=45
 P='../../src/data_packs.json';data=json.load(open(P))
 data['packs']['az104']=dict(meta=META,cards=CARDS,questions=QS,sections=SECS,duels=DUELS)
 data['planned']=[p for p in data['planned'] if p['id']!='az104']
+sys.path.insert(0,'..');import learn_units;learn_units.apply(data)
 json.dump(data,open(P,'w'),ensure_ascii=False)
 print('az104',len(CARDS),'cards',len(QS),'questions',len(DUELS),'duels',len(SECS),'sections')

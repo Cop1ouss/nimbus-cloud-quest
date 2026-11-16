@@ -1,5 +1,7 @@
 (function(){
 "use strict";
+// offline support on the hosted site only (not in the Claude artifact or file://)
+if('serviceWorker' in navigator&&location.protocol==='https:'&&/github\.io$/.test(location.hostname)){try{navigator.serviceWorker.register('sw.js').catch(function(){})}catch(e){}}
 document.documentElement.lang='en';
 var DATA=JSON.parse(document.getElementById('data').textContent);
 var PACKS=DATA.packs,ORDER=DATA.order,PLANNED=DATA.planned;
@@ -162,6 +164,7 @@ function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(M
 function secBy(id){return SECS.find(function(s){return s.id===id})}
 function inScope(x,scope,kind){
   if(scope==='all')return true;
+  if(scope==='mistakes')return isMistake(kind==='q'?state.q[x.id]:kind==='x'?state.du[x.id]:null);
   if(scope==='weak')return kind==='c'?cWeak(x):kind==='q'?qWeak(x):(x.miss||(state.du[x.id]&&state.du[x.id].w>state.du[x.id].c));
   if(scope[0]==='d')return x.d===parseInt(scope.slice(1),10);
   if(scope.slice(0,4)==='sec:'){var s=secBy(scope.slice(4));if(!s)return false;
@@ -276,7 +279,7 @@ function renderSection(s){var cl=secCards(s),i=SECS.indexOf(s)+1,t=secStars(s);
   if(s.traps&&s.traps.length)h+='<div class="panel" style="border-color:var(--bad)"><h2 style="color:var(--bad)">Traps that cost points</h2>'+list(s.traps)+'</div>';
   if(s.hooks&&s.hooks.length)h+='<div class="panel" style="border-color:var(--xp)"><h2 style="color:var(--xp)">Memory hooks</h2>'+list(s.hooks)+'</div>';
   if(cl.length)h+='<details><summary>All '+cl.length+' flashcard facts for this stop</summary><div class="in">'+cl.map(function(c){return '<div class="fact"><b>'+esc(c.front)+'</b>'+bold(c.back)+'</div>'}).join('')+'</div></details>';
-  h+='<details><summary>Microsoft Learn: read the source</summary><div class="in"><p class="small sub">Module: '+lnk(s.mod,esc(s.modTitle||'Open module'))+'</p>'+(s.units||[]).map(function(u){return '<div class="fact" style="padding:6px 0">'+lnk(u.u,esc(u.t))+'</div>'}).join('')+'</div></details>';
+  h+='<details><summary>Microsoft Learn: read the source</summary><div class="in"><p class="small sub">'+esc(s.modLabel||'Module')+': '+lnk(s.mod,esc(s.modTitle||'Open module'))+'</p>'+(s.units||[]).map(function(u){return '<div class="fact" style="padding:6px 0">'+lnk(u.u,esc(u.t))+'</div>'}).join('')+'</div></details>';
   if(SAMPLE)h+='<button class="btn block" type="button" data-act="chat-sec:'+s.id+'" style="margin-top:12px">'+ico('chat',18)+' Ask Nimbo about this stop</button>';
   h+='<div class="row" style="margin-top:14px"><button class="btn pri" type="button" data-act="cards:sec:'+s.id+'">Flashcards ('+cl.length+')</button><button class="btn" type="button" data-act="quiz:sec:'+s.id+'">Quiz ('+secQs(s).length+')</button></div>';
   h+='<button class="btn '+(state.read[s.id]?'':'gold')+' block" type="button" data-act="read:'+s.id+'" style="margin-top:10px">'+(state.read[s.id]?'✓ Marked as read':'Mark as read (+30 XP)')+'</button>';
@@ -402,6 +405,38 @@ var MODELS=(function(){var M={};
    ['pool',10,140,10,40,90,36,2,'VM'],['pool',62,140,10,40,90,36,2,'VM'],
    ['agw',128,0,0,112,240,10,0,'App Gateway (L7)'],['waf',138,10,10,92,30,18,1,'WAF'],['path',138,48,10,44,40,14,1,'/images'],['path',186,48,10,44,40,14,1,'/api'],
    ['pool',138,140,10,40,90,36,2,'VM'],['pool',190,140,10,40,90,36,2,'VM']]};
+ M.pim={t:'PIM activation',s:'An eligible admin holds no rights until they activate. Activation passes through the gates you set, gives the role for a few hours, then it expires on its own.',ex:12,
+  parts:[{id:'user',n:'Eligible user',c:FC.lav,t:'Has an eligible assignment: allowed to activate the role, but holds no permissions yet. Eligible assignments are for users and groups, not service principals or managed identities.'},
+   {id:'mfa',n:'MFA or auth context',c:FC.blue,t:'On activation, require multifactor authentication or a Conditional Access authentication context (for example phishing-resistant auth from a compliant device).'},
+   {id:'just',n:'Justification and ticket',c:FC.sap,t:'The user types why they need the role, and optionally a ticket number. Both land in the audit history.'},
+   {id:'appr',n:'Approval',c:FC.yel,t:'One or more approvers must approve. Pick at least two approvers so someone is always available.'},
+   {id:'active',n:'Active role',c:FC.green,t:'The role works now, for the activation duration you set (1 to 24 hours).'},
+   {id:'exp',n:'Expiry and review',c:FC.red,t:'The role drops off automatically when time runs out. Access reviews and alerts catch eligible assignments nobody uses.'}],
+  boxes:[['user',0,92,0,48,56,30,0,'Eligible'],['mfa',58,92,0,40,56,42,1,'MFA'],['just',106,92,0,40,56,54,1,'Justify'],['appr',154,92,0,40,56,66,2,'Approve'],
+   ['active',200,80,0,40,80,80,3,'Active'],['exp',200,172,0,40,40,22,3,'Expires'],['user',0,12,0,240,40,6,0,'Standing access = none']]};
+ M.kv={t:'Key Vault access',s:'A request must get through the network layer, then be authorized on the data plane. Deletion protection sits underneath everything.',ex:12,
+  parts:[{id:'net',n:'Firewall and private endpoint',c:FC.red,t:'Public access off or limited to selected networks and IPs; private endpoint for private access; trusted Microsoft services exception for named Azure services.'},
+   {id:'mi',n:'Managed identity',c:FC.lav,t:'The app signs in with a managed identity, so no secret is stored in code.'},
+   {id:'rbac',n:'Data-plane RBAC role',c:FC.yel,t:'Azure RBAC (recommended) decides what the identity can do: Secrets User reads values, Crypto User uses keys, Officer roles manage objects. Management-plane Contributor is not data access.'},
+   {id:'sec',n:'Secrets',c:FC.blue,t:'Passwords, connection strings, API keys. Versioned, with expiry dates.'},
+   {id:'key',n:'Keys',c:FC.sap,t:'Cryptographic keys, software or HSM-protected (Premium). Support auto-rotation policies; used for customer-managed keys.'},
+   {id:'cert',n:'Certificates',c:FC.teal,t:'X.509 certificates with auto-renewal from an integrated CA.'},
+   {id:'del',n:'Soft delete and purge protection',c:FC.mauve,t:'Soft delete is always on, 7 to 90 days. Purge protection blocks permanent deletion for everyone until retention ends and can never be turned off.'}],
+  boxes:[['del',0,0,0,240,240,8,0,'Soft delete + purge protection'],['net',0,0,8,240,24,18,1,'Firewall / private endpoint'],
+   ['mi',96,-56,8,48,40,30,1,'Managed identity'],['rbac',20,44,8,200,24,16,2,'Data-plane RBAC'],
+   ['sec',20,90,24,60,120,40,3,'Secrets'],['key',90,90,24,60,120,52,3,'Keys'],['cert',160,90,24,60,120,34,3,'Certificates']]};
+ M.sentinel={t:'Sentinel pipeline',s:'Data comes in through connectors, lands in a tier, rules turn it into incidents, and automation reacts. Follow it left to right.',ex:14,
+  parts:[{id:'src',n:'Sources',c:FC.lav,t:'Azure resources, Microsoft 365 and Defender, Windows (Security Events via AMA, or WEF), Linux syslog, CEF appliances, custom apps.'},
+   {id:'conn',n:'Connectors and DCRs',c:FC.blue,t:'Data connectors from content hub solutions. Azure Monitor Agent plus data collection rules choose and transform what is collected.'},
+   {id:'an',n:'Analytics tier',c:FC.green,t:'Hot data for rules, hunting and workbooks. 90 days included for Sentinel, extendable to two years.'},
+   {id:'lake',n:'Data lake tier',c:FC.teal,t:'Cheap long retention, up to 12 years. No real-time analytics rules; query with KQL jobs and notebooks.'},
+   {id:'rule',n:'Analytics rules',c:FC.yel,t:'Scheduled and near-real-time KQL rules create alerts, grouped into incidents.'},
+   {id:'inc',n:'Incidents',c:FC.peach,t:'What analysts work on. Responder role manages them.'},
+   {id:'auto',n:'Automation rules',c:FC.mauve,t:'Run when an incident is created or updated: assign, tag, change severity, close, run playbooks.'},
+   {id:'pb',n:'Playbooks',c:FC.red,t:'Azure Logic Apps workflows that act on other systems: post to Teams, disable a user, open a ticket.'}],
+  boxes:[['src',0,0,0,40,240,20,0,'Sources'],['conn',48,0,0,36,240,30,1,'Connectors + DCR'],
+   ['an',92,0,0,52,140,40,2,'Analytics tier'],['lake',92,150,0,52,90,16,2,'Data lake'],
+   ['rule',152,0,0,38,140,48,3,'Rules'],['inc',198,0,0,42,80,56,4,'Incidents'],['auto',198,88,0,42,52,40,4,'Automation'],['pb',198,148,0,42,92,30,4,'Playbooks']]};
  return M})();
 function bxHtml(b,c,cls,act,top,front){return '<div class="bx'+cls+'"'+(act?' data-act="'+act+'"':'')+' style="--c:'+c+';left:'+b[1]+'px;top:'+b[2]+'px;width:'+b[4]+'px;height:'+b[5]+'px;--z:'+(b[3]+b[6])+'px;--h:'+b[6]+'px;--lv:'+b[7]+'"><span>'+top+'</span><i class="f">'+front+'</i><i class="b"></i><i class="l"></i><i class="r"></i></div>'}
 function renderModel(id){var m=MODELS[id];if(!m)return '';var sel=M3.sel[id],p=m.parts.filter(function(x){return x.id===sel})[0],pc={};m.parts.forEach(function(x){pc[x.id]=x.c});
@@ -432,13 +467,15 @@ function renderCards(){
   return h}
 var pf={scope:'all'};
 function renderPlay(){var h='<h2 style="margin-top:16px">Arena</h2>'+(CAMP()?'<button class="campcta" type="button" data-act="campmap"><span class="clab">NEW \u00B7 CAMPAIGN</span><b>Cloud Clash</b><span>Card battler. Build and defend an Azure tenant across '+CAMP().levels.length+' levels.</span></button>':'')+'<p class="sub small">Pick a scope for quiz and duels, then a mode.</p>'+chips(pf.scope,'pscope')+togRow('recallQ','Recall first','Quizzes hide the options until you have an answer in your head.');
+  var mq=QS.filter(function(q){return isMistake(state.q[q.id])}).length,md=DUELS.filter(function(x){return isMistake(state.du[x.id])}).length;
+  h+=mq||md?'<div class="mode" style="border-color:var(--bad);display:block"><span style="display:flex;gap:12px;align-items:center"><span class="ic">'+ico('flame',26)+'</span><span><b>Mistake review</b><br><span class="small mute">'+mq+' question'+(mq===1?'':'s')+' and '+md+' duel pair'+(md===1?'':'s')+' you got wrong, from quizzes, mocks, bosses and duels. Each one clears after two right answers in a row.</span></span></span><span class="row" style="margin-top:10px">'+(mq?'<button class="btn pri" type="button" data-act="review-q">Review questions</button>':'')+(md?'<button class="btn" type="button" data-act="review-d">Review pairs</button>':'')+'</span></div>':'<div class="mode" style="display:block"><b>Mistake review</b><br><span class="small mute">Nothing to review yet. Questions and duel pairs you get wrong will collect here.</span></div>';
   h+='<button class="mode" type="button" data-act="duel-go"><span class="ic">'+ico('sword',26)+'</span><span><b>Which one? duels</b><br><span class="small mute">Two options, one clue. Built from the pairs you mixed up. '+DUELS.filter(function(x){return inScope(x,pf.scope,'x')}).length+' rounds</span></span></button>';
   h+='<button class="mode" type="button" data-act="quiz-go"><span class="ic">'+ico('doc',26)+'</span><span><b>Training quiz</b><br><span class="small mute">10 questions with explanations. Includes Choose 2. '+QS.filter(function(x){return inScope(x,pf.scope,'q')}).length+' available</span></span></button>';
   if(SAMPLE)h+='<button class="mode" type="button" data-act="ai-drill"><span class="ic">'+ico('spark',26)+'</span><span><b>Nimbo AI drill</b><br><span class="small mute">Nimbo writes 6 fresh questions on your weak spots from the course notes. Uses your Claude usage.</span></span></button>';
   h+='<h3 style="margin-top:20px">Boss battles</h3><p class="small mute">Three bosses per domain. Easy: 8 questions, 4 hearts, single answers only. Medium: 10 questions, 3 hearts. Hard: 12 questions, 2 hearts, Choose-2 first, 30 seconds each. Lose all hearts and the boss wins the round.</p>';
   DOMS.forEach(function(d){h+='<div class="panel d'+d+'" style="padding:12px;border-color:var(--c)"><b style="color:var(--c)">Domain '+d+': '+esc(DN[d])+'</b><div class="tiers">'+[1,2,3].map(function(t){var T=TIERS[t],dn=bossDone(d,t);
     return '<button class="tier" type="button" data-act="boss:'+d+':'+t+'" aria-label="'+esc(T.k+' boss: '+bossName(d,t)+(dn?', defeated':''))+'" style="--tc:'+T.c+'"><span class="tag" style="--c:'+T.c+'">'+T.k+'</span>'+bossArt(d,dn?'dead':'idle',58,t)+'<span class="small" style="font-weight:800;line-height:1.15">'+esc(bossName(d,t))+'</span><span class="small mute">'+(dn?'\u2713 defeated':T.n+' q \u00B7 '+T.h+' \u2665')+'</span></button>'}).join('')+'</div></div>'});
-  h+='<h3 style="margin-top:20px">Practice exam</h3><a class="mode" href="'+META.msUrl+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-color:var(--xp)"><span class="ic">'+ico('building',26)+'</span><span><b>Microsoft\u2019s official practice assessment \u2197</b><br><span class="small mute">The real one. Free, needs your Microsoft Learn sign-in, opens in a new tab. When you finish, log the score in the Me tab.</span></span></a><button class="mode" type="button" data-act="mock:full" style="border-color:var(--acc)"><span class="ic">'+ico('doc',26)+'</span><span><b>Full practice assessment</b><br><span class="small mute">'+META.mix.reduce(function(a,b){return a+b},0)+' questions, '+META.fullMins+' minutes, laid out like the Microsoft one. No hints.'+(BASE?' Compared with your '+BASE.pct+'% from '+BASE.t.slice(5)+'.':'')+'</span></span></button>'+
+  h+='<h3 style="margin-top:20px">Practice exam</h3><a class="mode" href="'+META.msUrl+'" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-color:var(--xp)"><span class="ic">'+ico('building',26)+'</span><span><b>Microsoft\u2019s official practice assessment \u2197</b><br><span class="small mute">'+(META.msNote?esc(META.msNote):'The real one. Free, needs your Microsoft Learn sign-in, opens in a new tab. When you finish, log the score in the Me tab.')+'</span></span></a><button class="mode" type="button" data-act="mock:full" style="border-color:var(--acc)"><span class="ic">'+ico('doc',26)+'</span><span><b>Full practice assessment</b><br><span class="small mute">'+META.mix.reduce(function(a,b){return a+b},0)+' questions, '+META.fullMins+' minutes, laid out like the Microsoft one. No hints.'+(BASE?' Compared with your '+BASE.pct+'% from '+BASE.t.slice(5)+'.':'')+'</span></span></button>'+
     '<button class="mode" type="button" data-act="mock:quick"><span class="ic">'+ico('bolt',26)+'</span><span><b>Quick mock</b><br><span class="small mute">'+META.quickMix.reduce(function(a,b){return a+b},0)+' questions, '+META.quickMins+' minutes. Good for a lunch break. Does not count toward the booking checklist.</span></span></button>'+
     '<button class="mode" type="button" data-act="mock:hard" style="border-color:var(--bad)"><span class="ic">'+ico('flame',26)+'</span><span><b>Hard practice assessment</b><br><span class="small mute">'+META.mix.reduce(function(a,b){return a+b},0)+' questions in '+(META.hardMins||45)+' minutes. Packed with Yes/No sets, matching, Choose-2 and the questions you have missed before. Harder than the real exam on purpose.</span></span></button>';
   return h}
@@ -739,7 +776,8 @@ function rateCard(r){var id=S.q[S.i],c=cs(id)||{b:0,n:0};ensureDay();var was=c.b
   c.n=(c.n||0)+1;state.cards[id]=c;S.n[r]=(S.n[r]||0)+1;state.stats.cards++;state.day.cards++;
   var x=r==='again'?1:r==='hard'?2:r==='good'?4:6;if(was<3&&c.b>=3){x+=10;SFX.master();FX.burst=true}S.xp+=award(x);S.i++;S.flip=false;S.seen=false;after()}
 function startQuiz(scope){
-  var pool=QS.filter(function(q){return inScope(q,scope,'q')});if(!pool.length){toast('No questions in that scope yet');return}
+  var pool=QS.filter(function(q){return inScope(q,scope,'q')});if(!pool.length){toast(scope==='mistakes'?'Nothing left to review. Nice work.':'No questions in that scope yet');return}
+  if(scope==='mistakes'){var lw=function(q){var t=state.q[q.id];return (t.w-t.c)*1e13+(t.lw||0)};S=mkQ('quiz',pool.sort(function(a,b){return lw(b)-lw(a)}).slice(0,10));return}
   var wk=shuffle(pool).sort(function(a,b){return (qWeak(b)?1:0)-(qWeak(a)?1:0)});
   var n=Math.min(10,pool.length);S=mkQ('quiz',wk.slice(0,n))}
 function cmp(q){return q.type==='yn'||q.type==='match'}
@@ -773,7 +811,9 @@ function resumeBanner(){var m=state.mockSave;if(!m||m.cert!==CERT||S)return '';v
 function tick(){if(!S||S.type!=='mock'||S.done){return}var left=S.secs-Math.floor((Date.now()-S.t0)/1000);var n=$('#clock');if(n)n.textContent=fmt(Math.max(left,0));if(left<=0)finishMock()}
 function fmt(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)}
 function isRight(it,disp){if(cmp(it.q)){if(!isDone(it,disp))return false;for(var i=0;i<it.q.ans.length;i++)if(disp[i]!==it.q.ans[i])return false;return true}var orig=disp.map(function(i){return it.perm[i]}).sort().join(),ans=it.q.ans.slice().sort().join();return orig===ans}
-function recQ(q,ok){if(q.ai)return;var s=state.q[q.id]||{c:0,w:0};if(ok)s.c++;else s.w++;state.q[q.id]=s}
+function recQ(q,ok){if(q.ai)return;var s=state.q[q.id]||{c:0,w:0};if(ok){s.c++;s.st=(s.st||0)+1}else{s.w++;s.st=0;s.lw=Date.now()}state.q[q.id]=s}
+// a mistake clears after two right answers in a row
+function isMistake(r){return !!(r&&r.w>0&&(r.st||0)<2)}
 function checkAnswer(){var it=S.items[S.i];if(S.chk)return;S.chk=true;var ok=isRight(it,S.sel);recQ(it.q,ok);ensureDay();
   if(ok){S.right++;S.combo++;S.best=Math.max(S.best,S.combo);state.stats.quizRight++;state.day.quiz++;state.stats.bestCombo=Math.max(state.stats.bestCombo,S.combo);
     var x=10+Math.min(S.combo-1,5)*2;S.xp+=award(x);S.lastOk=true;FX.kind='right';SFX.right(S.combo)}
@@ -809,7 +849,7 @@ function renderRivalPick(){var h='<div class="row" style="margin-top:12px;justif
   [1,2,3].forEach(function(n){var R=RIVALS[n],beat=state.rivals&&state.rivals[n];h+='<button class="mode" type="button" data-act="rival:'+n+'" style="border-color:'+R.c+'"><span class="ic" style="width:64px;display:flex;justify-content:center">'+rivalArt(n,beat?'dead':'idle',58)+'</span><span><b>'+esc(R.n)+'</b>'+(beat?' <span class="small" style="color:var(--ok)">\u2713 beaten</span>':'')+'<br><span class="small mute">'+esc(R.t)+' \u00B7 You '+R.me+' \u2665, rival '+R.hp+' HP</span><br><span class="small mute"><i>'+esc(R.lore)+'</i></span></span></button>'});
   return h+'<button class="mode" type="button" data-act="rival:0"><span class="ic">'+ico('heart',26)+'</span><span><b>Practice duels</b><br><span class="small mute">10 rounds, no timer, no rival. Good for learning the pairs.</span></span></button>'}
 function dtick(){if(!S||S.type!=='duel'||!S.r||S.pick!==null||S.over)return;var left=S.dl-Date.now(),b=$('#dtbar');if(b)b.style.width=Math.max(0,left/(RIVALS[S.r].sec*1000)*100)+'%';if(left<=0){pickDuel(-1);render()}}
-function startDuel(scope,rv){rv=rv||0;var pool=DUELS.filter(function(x){return inScope(x,scope,'x')});if(!pool.length){toast('No duels in that scope');return}
+function startDuel(scope,rv){rv=rv||0;var pool=DUELS.filter(function(x){return inScope(x,scope,'x')});if(!pool.length){toast(scope==='mistakes'?'No missed pairs left. Nice work.':'No duels in that scope');return}
   var w=function(x){var d=state.du[x.id];return (x.miss?1:0)+(d&&d.w>d.c?2:0)-(d&&d.c>d.w?1:0)+Math.random()};
   var r=pool.slice().sort(function(a,b){return w(b)-w(a)}).slice(0,rv?16:10);
   S={type:'duel',scope:scope,r:rv,items:r.map(function(x){return {x:x,sw:Math.random()<.5}}),i:0,pick:null,wins:0,combo:0,best:0,xp:0,missed:[]};
@@ -817,8 +857,8 @@ function startDuel(scope,rv){rv=rv||0;var pool=DUELS.filter(function(x){return i
 function endDuel(){S.over=true;if(S.timer)clearInterval(S.timer);S.won=S.rhp<=0||(S.i>=S.items.length&&S.me>S.rhp);if(S.won){var R=RIVALS[S.r];state.rivals=state.rivals||{};var first=!state.rivals[S.r];state.rivals[S.r]=true;S.xp+=award(first?R.xp:Math.round(R.xp/3));SFX.win();FX.burst=true;toast(R.n+' defeated!')}else SFX.lose();after()}
 function pickDuel(side){var it=S.items[S.i];if(S.pick!==null||S.over)return;S.pick=side;S.slow=side<0;
   var real=it.sw?1-side:side,ok=real===it.x.ans;ensureDay();var d=state.du[it.x.id]||{c:0,w:0};
-  if(ok){d.c++;S.wins++;S.combo++;S.best=Math.max(S.best,S.combo);state.stats.duelWins++;state.day.duel++;state.stats.bestCombo=Math.max(state.stats.bestCombo,S.combo);S.xp+=award(6+Math.min(S.combo-1,4));FX.kind='right';SFX.right(S.combo);if(S.r){S.rhp--;var fast=(S.dl-Date.now())>RIVALS[S.r].sec*500;if(fast){S.xp+=award(3);S.fast=true}else S.fast=false}}
-  else{d.w++;S.combo=0;S.missed.push(it.x);FX.kind='wrong';SFX.wrong();if(S.r){S.me--;setTimeout(SFX.heart,300)}}
+  if(ok){d.c++;d.st=(d.st||0)+1;S.wins++;S.combo++;S.best=Math.max(S.best,S.combo);state.stats.duelWins++;state.day.duel++;state.stats.bestCombo=Math.max(state.stats.bestCombo,S.combo);S.xp+=award(6+Math.min(S.combo-1,4));FX.kind='right';SFX.right(S.combo);if(S.r){S.rhp--;var fast=(S.dl-Date.now())>RIVALS[S.r].sec*500;if(fast){S.xp+=award(3);S.fast=true}else S.fast=false}}
+  else{d.w++;d.st=0;d.lw=Date.now();S.combo=0;S.missed.push(it.x);FX.kind='wrong';SFX.wrong();if(S.r){S.me--;setTimeout(SFX.heart,300)}}
   state.du[it.x.id]=d;after()}
 
 /* ---------- session rendering ---------- */
@@ -1016,6 +1056,8 @@ document.addEventListener('click',function(e){
    case 'cards':if(p[1]==='sec'||p[1]==='weak'){var sc=p[1]==='weak'?'weak':'sec:'+p[2];cf.scope=sc;startCards(sc,cf.size);if(S)S.scope=sc}break;
    case 'flip':if(S&&S.type==='cards'){var ri=$('#recallIn');if(ri){S.typed=S.typed||{};S.typed[S.q[S.i]]=ri.value}SFX.flip();S.flip=!S.flip;S.flipAnim=true;if(S.flip)S.seen=true}break;
    case 'rate':rateCard(p[1]);break;
+   case 'review-q':startQuiz('mistakes');if(S)S.scope='mistakes';break;
+   case 'review-d':leave();startDuel('mistakes',0);break;
    case 'quiz-go':startQuiz(pf.scope);if(S)S.scope=pf.scope;break;
    case 'quiz-again':var sc2=S.scope||pf.scope;if(sc2==='ai'){startAIDrill();rerender=false;break}startQuiz(sc2);if(S)S.scope=sc2;break;
    case 'quiz':if(p[1]==='weak'){startQuiz('weak');if(S)S.scope='weak'}else{startQuiz('sec:'+p[2]);if(S)S.scope='sec:'+p[2]}break;

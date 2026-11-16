@@ -183,5 +183,6 @@ for s in data['packs']['az900']['sections']:
     if s['id']=='s8':s['models']=['did','zt','ca']
     if s['id']=='s1':s['models']=['shared']
     if s['id']=='s6':s['models']=['vnet']
+sys.path.insert(0,'..');import learn_units;learn_units.apply(data)
 json.dump(data,open(P,'w'),ensure_ascii=False)
 print('sc900',len(CARDS),'cards',len(QS),'questions',len(DUELS),'duels',len(SECS),'sections')

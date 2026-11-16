@@ -87,6 +87,9 @@ with sync_playwright() as p:
     for s in range(1,13):
         pg.evaluate("location.hash='learn/s%d'"%s);pg.wait_for_timeout(120);assert pg.locator('h1').count()>=1,s
     pg.evaluate("location.hash='learn/s6'");pg.wait_for_timeout(300);assert pg.locator('.m3w').count()==2
+    for sec,n in (('s1',2),('s2',1),('s11',1)):
+        pg.evaluate("location.hash='learn/%s'"%sec);pg.wait_for_timeout(300);assert pg.locator('.m3w').count()==n,sec
+    pg.evaluate("location.hash='learn/s7'");pg.wait_for_timeout(300);assert 'Learning path' in pg.text_content('#view') and 'Entra Agent' in pg.text_content('#view')
     play();pg.locator('#view [data-act^="boss:3"]').first.click();pg.wait_for_timeout(500)
     o=pg.locator('[data-act^="opt:"]');assert o.count()>0;o.first.click();pg.wait_for_timeout(200)
     play();pg.locator('#view [data-act="mock:hard"]').first.click();pg.wait_for_timeout(500);pg.screenshot(path=SP+'/sc500_hard.png')

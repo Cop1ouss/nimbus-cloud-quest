@@ -1,0 +1,1050 @@
+{
+ "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/": [
+  {
+   "t": "Describe the shared responsibility model",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/2-describe-shared-responsibility-model"
+  },
+  {
+   "t": "Describe defense in depth",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/3-describe-defense-depth"
+  },
+  {
+   "t": "Describe the Zero Trust model",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/4-describe-zero-trust-model"
+  },
+  {
+   "t": "Describe encryption and hashing",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/5-describe-encryption-hashing"
+  },
+  {
+   "t": "Describe governance, risk, and compliance (GRC) concepts",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-concepts-methodologies/6-describe-compliance-concepts"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/": [
+  {
+   "t": "Define authentication and authorization",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/2-define-authentication-authorization"
+  },
+  {
+   "t": "Define identity as the primary security perimeter",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/3-define-identity-primary-security-perimeter"
+  },
+  {
+   "t": "Describe the role of the identity provider",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/4-describe-role-identity-provider"
+  },
+  {
+   "t": "Describe the concept of directory services and Active Directory",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/5-describe-concept-of-directory-services-active-directory"
+  },
+  {
+   "t": "Describe the concept of federation",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/6-describe-concept-federation"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/": [
+  {
+   "t": "Describe Microsoft Entra",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/1a-describe-microsoft-entra"
+  },
+  {
+   "t": "Describe Microsoft Entra ID",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/2-describe-azure-active-directory"
+  },
+  {
+   "t": "Describe types of identities",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/3-describe-identity-types"
+  },
+  {
+   "t": "Describe Microsoft Entra Agent ID",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/3a-describe-microsoft-entra-agent-id"
+  },
+  {
+   "t": "Describe hybrid identity",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/4-describe-concept-of-hybrid-identity"
+  },
+  {
+   "t": "Describe external identities",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-basic-services-identity-types/5-describe-external-identities"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/explore-authentication-capabilities/": [
+  {
+   "t": "Describe authentication methods",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-authentication-capabilities/2-describe-authentication-methods"
+  },
+  {
+   "t": "Describe multifactor authentication",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-authentication-capabilities/3-describe-multi-factor-authentication"
+  },
+  {
+   "t": "Describe self-service password reset",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-authentication-capabilities/4-describe-self-service-password-reset"
+  },
+  {
+   "t": "Describe password protection and management capabilities",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-authentication-capabilities/5-describe-password-protection-management"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/explore-access-management-capabilities/": [
+  {
+   "t": "Describe Conditional Access",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-access-management-capabilities/2-describe-conditional-access-azure-ad"
+  },
+  {
+   "t": "Describe Global Secure Access in Microsoft Entra",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-access-management-capabilities/2a-describe-global-secure-access"
+  },
+  {
+   "t": "Describe Microsoft Entra roles and role-based access control (RBAC)",
+   "u": "https://learn.microsoft.com/en-us/training/modules/explore-access-management-capabilities/3-describe-azure-role-based-access-control"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/": [
+  {
+   "t": "Describe Microsoft Entra ID Governance",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/2-describe-identity-governance"
+  },
+  {
+   "t": "Describe access reviews",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/3-describe-what-entitlement-management-access-reviews"
+  },
+  {
+   "t": "Describe entitlement management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/3a-describe-entitlement-management-terms-use"
+  },
+  {
+   "t": "Describe the capabilities of Privileged Identity Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/4-describe-privileged-identity-management"
+  },
+  {
+   "t": "Describe Microsoft Entra ID Protection",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/5-describe-azure"
+  },
+  {
+   "t": "Describe Microsoft Entra Verified ID",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/5b-describe-entra-verified-id"
+  },
+  {
+   "t": "Describe Microsoft Entra integration with Microsoft Security Copilot",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-identity-protection-governance-capabilities/5c-describe-entra-integration-in-copilot"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/": [
+  {
+   "t": "Describe Azure DDoS protection",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/2-describe-azure-ddos-protection"
+  },
+  {
+   "t": "Describe Azure Firewall",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/3-describe-what-azure-firewall"
+  },
+  {
+   "t": "Describe Web Application Firewall",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/4-describe-web-application-firewall"
+  },
+  {
+   "t": "Describe network segmentation in Azure",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/5-describe-network-segmentation"
+  },
+  {
+   "t": "Describe Azure Network Security Groups",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/6-describe-azure-network-security-groups"
+  },
+  {
+   "t": "Describe Azure Bastion",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/7-describe-azure-bastion-just-in-time-access"
+  },
+  {
+   "t": "Describe Azure Key Vault",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-basic-security-capabilities-azure/8-describe-ways-azure-encrypts-data"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/": [
+  {
+   "t": "Describe Microsoft Defender for Cloud",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/2-describe-defender-cloud"
+  },
+  {
+   "t": "Describe how security policies, standards, and recommendations improve cloud security posture",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/3-baselines-for-azure"
+  },
+  {
+   "t": "Describe Cloud security posture management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/4-describe-cloud-security-posture-management"
+  },
+  {
+   "t": "Describe the enhanced security of Microsoft Defender for Cloud",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/5a-describe-enhanced-security-defender-cloud"
+  },
+  {
+   "t": "Describe DevOps security management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-management-capabilities-of-azure/6-describe-dev-ops-security-management"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-security-capabilities-of-azure-sentinel/": [
+  {
+   "t": "Define the concepts of SIEM and SOAR",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-capabilities-of-azure-sentinel/2-define-concepts-of-siem-soar"
+  },
+  {
+   "t": "Describe threat detection and mitigation capabilities in Microsoft Sentinel",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-capabilities-of-azure-sentinel/3-describe-sentinel-provide-integrated-threat-management"
+  },
+  {
+   "t": "Describe Microsoft Sentinel integration with Microsoft Security Copilot",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-security-capabilities-of-azure-sentinel/4-describe-security-copilot"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/": [
+  {
+   "t": "Describe Microsoft Defender XDR services",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/2-describe-services"
+  },
+  {
+   "t": "Describe Microsoft Defender for Office 365",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/3-describe-defender-office"
+  },
+  {
+   "t": "Describe Microsoft Defender for Endpoint",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/4-describe-defender-endpoint"
+  },
+  {
+   "t": "Describe Microsoft Defender for Cloud Apps",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/5-describe-microsoft-cloud-app-security"
+  },
+  {
+   "t": "Describe Microsoft Defender for Identity",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/6-describe-defender-identity"
+  },
+  {
+   "t": "Describe Microsoft Defender Vulnerability Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/6a-describe-defender-vulnerability-management"
+  },
+  {
+   "t": "Describe Microsoft Defender Threat Intelligence",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/6b-describe-defender-threat-intelligence"
+  },
+  {
+   "t": "Describe Microsoft Security Exposure Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/6c-describe-security-exposure-management"
+  },
+  {
+   "t": "Describe the Microsoft Defender portal",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/7-describe-microsoft-defender-portal"
+  },
+  {
+   "t": "Describe Copilot integration with Microsoft Defender XDR",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-threat-protection-with-microsoft-365-defender/7a-describe-copilot-in-defender-xdr"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-compliance-management-capabilities-microsoft/": [
+  {
+   "t": "Describe the offerings of the Service Trust portal",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-compliance-management-capabilities-microsoft/2-describe-service-trust-portal"
+  },
+  {
+   "t": "Describe Microsoft's privacy principles",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-compliance-management-capabilities-microsoft/3-describe-microsofts-privacy-principles"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/": [
+  {
+   "t": "Describe Compliance Manager",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/4-describe-compliance-manager"
+  },
+  {
+   "t": "Describe Communication Compliance",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/5-describe-communication-compliance"
+  },
+  {
+   "t": "Describe eDiscovery",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/3-describe-ediscovery"
+  },
+  {
+   "t": "Describe audit in Microsoft Purview",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/2-describe-audit"
+  },
+  {
+   "t": "Describe Data Lifecycle Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/6-describe-data-lifecycle-management"
+  },
+  {
+   "t": "Describe Microsoft Purview Records Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-risk-compliance-governance/7-describe-records-management"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/": [
+  {
+   "t": "Describe the data classification capabilities of Microsoft Purview Information Protection",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/2-identify-sensitive-data"
+  },
+  {
+   "t": "Describe sensitivity labels and policies in Microsoft Purview Information Protection",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/3-describe-sensitivity-labels-policies"
+  },
+  {
+   "t": "Describe data loss prevention in Microsoft Purview",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/4-describe-data-loss-prevention"
+  },
+  {
+   "t": "Describe insider risk management in Microsoft Purview",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/5-describe-insider-risk-management"
+  },
+  {
+   "t": "Describe adaptive protection in Microsoft Purview",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/6-describe-adaptive-protection"
+  },
+  {
+   "t": "Describe Data Security Posture Management",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/6a-describe-data-security-posture-management"
+  },
+  {
+   "t": "Describe Microsoft Purview Data Security Investigations",
+   "u": "https://learn.microsoft.com/en-us/training/modules/describe-purview-data-solutions/6b-describe-data-security-investigations"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/": [
+  {
+   "t": "Create, configure, and manage users",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/2-users"
+  },
+  {
+   "t": "Exercise - assign licenses to users",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/3-exercise-assign-licenses-users"
+  },
+  {
+   "t": "Exercise - restore or remove deleted users",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/4-exercise-restore-remove-deleted-users"
+  },
+  {
+   "t": "Create, configure, and manage groups",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/5-groups"
+  },
+  {
+   "t": "Exercise - add groups in Microsoft Entra ID",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/6-exercise-add-groups-azure-active-directory"
+  },
+  {
+   "t": "Configure and manage device registration",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/7-configure-manage-device-registration"
+  },
+  {
+   "t": "Manage licenses",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/8-manage-licenses"
+  },
+  {
+   "t": "Exercise - change group license assignments",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/9-exercise-change-group-license-assignments"
+  },
+  {
+   "t": "Exercise - change user license assignments",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/10-exercise-change-user-license-assignments"
+  },
+  {
+   "t": "Create custom security attributes",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/11-create-custom-security-attributes"
+  },
+  {
+   "t": "Explore automatic user creation",
+   "u": "https://learn.microsoft.com/en-us/training/modules/create-configure-manage-identities/12-explore-automatic-user-creation"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/": [
+  {
+   "t": "What is Azure RBAC?",
+   "u": "https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/2-rbac-overview"
+  },
+  {
+   "t": "Exercise - List access using Azure RBAC and the Azure portal",
+   "u": "https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/4-list-access"
+  },
+  {
+   "t": "Exercise - Grant access using Azure RBAC and the Azure portal",
+   "u": "https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/5-grant-access"
+  },
+  {
+   "t": "Exercise - View activity logs for Azure RBAC changes",
+   "u": "https://learn.microsoft.com/en-us/training/modules/secure-azure-resources-with-rbac/6-view-activity-logs"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-policy/": [
+  {
+   "t": "What is Azure Policy?",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-policy/2-what-is-azure-policy"
+  },
+  {
+   "t": "How Azure Policy works",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-policy/3-how-azure-policy-works"
+  },
+  {
+   "t": "When to use Azure Policy",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-policy/4-when-to-use-azure-policy"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/": [
+  {
+   "t": "Review Azure Storage security strategies",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/2-review-strategies"
+  },
+  {
+   "t": "Create shared access signatures",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/3-create-shared-access-signatures"
+  },
+  {
+   "t": "Identify URI and SAS parameters",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/4-identify-uri-sas-parameters"
+  },
+  {
+   "t": "Determine Azure Storage encryption",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/5-determine-storage-service-encryption"
+  },
+  {
+   "t": "Create customer-managed keys",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/6-create-customer-managed-keys"
+  },
+  {
+   "t": "Apply Azure Storage security best practices",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/7-apply-best-practices"
+  },
+  {
+   "t": "Exercise: Manage Azure Storage",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-security/8-simulation-storage"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/": [
+  {
+   "t": "Implement Azure Storage",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/2-implement-azure-storage"
+  },
+  {
+   "t": "Explore Azure Storage services",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/3-explore-azure-storage-services"
+  },
+  {
+   "t": "Determine storage account types",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/4-determine-storage-account-kinds"
+  },
+  {
+   "t": "Determine replication strategies",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/5-determine-replication-strategies"
+  },
+  {
+   "t": "Access storage",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/6-access-storage"
+  },
+  {
+   "t": "Secure storage endpoints",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-storage-accounts/7-secure-storage-endpoints"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/": [
+  {
+   "t": "Implement Azure Blob Storage",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/2-implement"
+  },
+  {
+   "t": "Create blob containers",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/3-create-blob-containers"
+  },
+  {
+   "t": "Assign blob access tiers",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/4-create-blob-access-tiers"
+  },
+  {
+   "t": "Add blob lifecycle management rules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/5-add-blob-lifecycle-management-rules"
+  },
+  {
+   "t": "Determine blob object replication",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/6-determine-blob-object-replication"
+  },
+  {
+   "t": "Manage blobs",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/7-upload-blobs"
+  },
+  {
+   "t": "Determine Blob Storage pricing",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/8-determine-storage-pricing"
+  },
+  {
+   "t": "Exercise - Provide storage for the public website",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-blob-storage/9-simulation-blobs"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/": [
+  {
+   "t": "What is Bicep?",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/2-what-bicep"
+  },
+  {
+   "t": "Define resources",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/3-define-resources"
+  },
+  {
+   "t": "Exercise - Define resources in a Bicep file",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/4-exercise-define-resources-bicep-file"
+  },
+  {
+   "t": "Add flexibility by using parameters and variables",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/5-add-flexibility-parameters-variables"
+  },
+  {
+   "t": "Exercise - Add parameters and variables to your Bicep file",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/6-exercise-add-parameters-variables-bicep-file"
+  },
+  {
+   "t": "Group related resources by using modules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/7-group-related-resources-modules"
+  },
+  {
+   "t": "Exercise - Refactor your Bicep file to use modules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/build-first-bicep-file/8-exercise-refactor-file-modules"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/": [
+  {
+   "t": "Plan for maintenance and downtime",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/2-plan-for-maintenance-downtime"
+  },
+  {
+   "t": "Create availability sets",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/3-setup-availability-sets"
+  },
+  {
+   "t": "Review update domains and fault domains",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/4-review-update-fault-domains"
+  },
+  {
+   "t": "Review availability zones",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/5-review-availability-zones"
+  },
+  {
+   "t": "Compare vertical and horizontal scaling",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/6-compare-vertical-horizontal-scaling"
+  },
+  {
+   "t": "Implement Azure Virtual Machine Scale Sets",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/7-implement-scale-sets"
+  },
+  {
+   "t": "Create Virtual Machine Scale Sets",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/8-create-scale-sets"
+  },
+  {
+   "t": "Implement autoscale",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/9-implement-autoscale"
+  },
+  {
+   "t": "Configure autoscale",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-virtual-machine-availability/10-configure-autoscale"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/": [
+  {
+   "t": "Compare containers to virtual machines",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/2-compare-containers-to-virtual-machines"
+  },
+  {
+   "t": "Review Azure Container Instances",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/3-review"
+  },
+  {
+   "t": "Implement container groups",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/4-implement-container-groups"
+  },
+  {
+   "t": "Review Azure Container Apps",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/5-review-docker-platform"
+  },
+  {
+   "t": "Exercise: Implement Container Instances",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-container-instances/6-simulation-containers"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/": [
+  {
+   "t": "Implement Azure App Service",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/2-implement"
+  },
+  {
+   "t": "Create an app with App Service",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/3-create-app-service"
+  },
+  {
+   "t": "Explore continuous integration and deployment",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/4-explore-continuous-integration-deployment"
+  },
+  {
+   "t": "Create deployment slots",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/5-create-deployment-slots"
+  },
+  {
+   "t": "Add deployment slots",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/6-add-deployment-slots"
+  },
+  {
+   "t": "Secure your App Service app",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/7-secure-app-service"
+  },
+  {
+   "t": "Create custom domain names",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/8-create-custom-domain-names"
+  },
+  {
+   "t": "Back up and restore your App Service app",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/9-backup-app-service"
+  },
+  {
+   "t": "Use Azure Application Insights",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/10-use-application-insights"
+  },
+  {
+   "t": "Exercise: Implement Web Apps",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-app-services/11-simulation-web-apps"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/": [
+  {
+   "t": "Determine Azure Virtual Network peering uses",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/2-determine-uses"
+  },
+  {
+   "t": "Determine gateway transit and connectivity",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/3-determine-gateway-transit-connectivity"
+  },
+  {
+   "t": "Create virtual network peering",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/4-create"
+  },
+  {
+   "t": "Extend peering with user-defined routes and service chaining",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/5-determine-service-chaining-uses"
+  },
+  {
+   "t": "Exercise - Implement Intersite Connectivity",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-vnet-peering/6-simulation-peering"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/": [
+  {
+   "t": "Implement network security groups",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/2-implement-network-security-groups"
+  },
+  {
+   "t": "Determine network security group rules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/3-determine-network-security-groups-rules"
+  },
+  {
+   "t": "Determine network security group effective rules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/4-determine-network-security-groups-effective-rules"
+  },
+  {
+   "t": "Create network security group rules",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/5-create-network-security-groups-rules"
+  },
+  {
+   "t": "Implement application security groups",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/6-implement-asgs"
+  },
+  {
+   "t": "Exercise - Implement virtual networking",
+   "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-groups/7-simulation-create-network-groups"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-load-balancer/": [
+  {
+   "t": "What is Azure Load Balancer?",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-load-balancer/2-what-is-azure-load-balancer"
+  },
+  {
+   "t": "How Azure Load Balancer works",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-load-balancer/3-how-azure-load-balancer-works"
+  },
+  {
+   "t": "When to use Azure Load Balancer",
+   "u": "https://learn.microsoft.com/en-us/training/modules/intro-to-azure-load-balancer/4-when-to-use-azure-load-balancer"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/": [
+  {
+   "t": "Monitoring for Azure VMs",
+   "u": "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/2-monitor-vm-health"
+  },
+  {
+   "t": "Monitor VM host data",
+   "u": "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/3-exercise-create-virtual-machine"
+  },
+  {
+   "t": "Use metrics explorer to view detailed host metrics",
+   "u": "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/4-view-host-metrics"
+  },
+  {
+   "t": "Collect client performance counters by using VM insights",
+   "u": "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/5-enable-vm-insights"
+  },
+  {
+   "t": "Collect VM client event logs",
+   "u": "https://learn.microsoft.com/en-us/training/modules/monitor-azure-vm-using-diagnostic-data/6-collect-log-data"
+  }
+ ],
+ "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/": [
+  {
+   "t": "Azure Backup features and scenarios",
+   "u": "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/2-azure-backup-features-scenarios"
+  },
+  {
+   "t": "Back up an Azure virtual machine by using Azure Backup",
+   "u": "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/3-back-up-azure-virtual-machine"
+  },
+  {
+   "t": "Exercise - Back up an Azure virtual machine",
+   "u": "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/4-exercise-back-up-azure-virtual-machine"
+  },
+  {
+   "t": "Restore virtual machine data",
+   "u": "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/5-restore-virtual-machine-data"
+  },
+  {
+   "t": "Exercise - Restore Azure virtual machine data",
+   "u": "https://learn.microsoft.com/en-us/training/modules/protect-virtual-machines-with-azure-backup/6-exercise-restore-virtual-machine-data"
+  }
+ ],
+ "sc500:s1": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/secure-access-resources-entra/",
+  "modTitle": "Secure access to resources by using Microsoft Entra",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Manage and implement authentication methods in Microsoft Entra ID",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-implement-authentication-methods/"
+   },
+   {
+    "t": "Implement and configure Privileged Identity Management (PIM)",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-configure-privileged-identity-management/"
+   },
+   {
+    "t": "Authenticate your API plugin for declarative agents with secured APIs",
+    "u": "https://learn.microsoft.com/en-us/training/modules/copilot-declarative-agent-api-plugin-auth/"
+   }
+  ]
+ },
+ "sc500:s2": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/configure-key-vault-security/",
+  "modTitle": "Secure Azure Key Vault with defense in depth for the cloud and AI workloads",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Configure and secure Azure Key Vault",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-secure-key-vault/"
+   },
+   {
+    "t": "Manage keys and secrets in Azure Key Vault",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-keys-secrets-key-vault/"
+   },
+   {
+    "t": "Manage certificates and monitor Azure Key Vault",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-certificates-monitor-key-vault/"
+   },
+   {
+    "t": "Protect Azure Key Vault with Microsoft Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/defend-key-vault-defender-cloud/"
+   }
+  ]
+ },
+ "sc500:s3": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/security-governance-compliance/",
+  "modTitle": "Enforce security governance and regulatory compliance",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Enforce governance with Azure Policy and resource locks",
+    "u": "https://learn.microsoft.com/en-us/training/modules/enforce-governance-azure-policy-resource-locks/"
+   },
+   {
+    "t": "Configure security controls and remediate recommendations in Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-defender-cloud-security-controls/"
+   },
+   {
+    "t": "Evaluate regulatory compliance in Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/evaluate-regulatory-compliance/"
+   },
+   {
+    "t": "Manage and right-size RBAC role assignments for least privilege",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-right-size-rbac-role-assignments/"
+   },
+   {
+    "t": "Protect backup data with Azure Backup security features",
+    "u": "https://learn.microsoft.com/en-us/training/modules/protect-backup-data-azure-backup-security/"
+   },
+   {
+    "t": "Implement security controls in infrastructure as code",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-security-controls-infrastructure-as-code/"
+   }
+  ]
+ },
+ "sc500:s4": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/implement-azure-storage-security/",
+  "modTitle": "Implement security for Azure Storage for the cloud and AI security engineer",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Describe Azure storage services",
+    "u": "https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/"
+   },
+   {
+    "t": "Implement security and manage access for Azure Storage",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-storage-account-security/"
+   },
+   {
+    "t": "Configure network security for Azure Storage",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-network-security-azure-storage/"
+   },
+   {
+    "t": "Implement Microsoft Defender for Storage",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-defender-storage/"
+   }
+  ]
+ },
+ "sc500:s5": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/implement-azure-sql-database-security/",
+  "modTitle": "Implement security for Azure SQL databases",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Configure platform-level security for Azure SQL",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-sql-platform-security/"
+   },
+   {
+    "t": "Configure auditing for Azure SQL Database and SQL Managed Instance",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-azure-sql-auditing/"
+   },
+   {
+    "t": "Implement Microsoft Defender for Databases",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-defender-databases/"
+   }
+  ]
+ },
+ "sc500:s6": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/implement-network-security-controls-azure/",
+  "modTitle": "Implement network security controls in Azure",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Segment and isolate Azure workloads using network security controls",
+    "u": "https://learn.microsoft.com/en-us/training/modules/segment-isolate-workloads-network-security-controls/"
+   },
+   {
+    "t": "Centralize and enforce traffic inspection using Azure Firewall",
+    "u": "https://learn.microsoft.com/en-us/training/modules/centralize-traffic-inspection-azure-firewall/"
+   },
+   {
+    "t": "Secure remote and hybrid connectivity using VPN gateways and Microsoft Entra Private Access",
+    "u": "https://learn.microsoft.com/en-us/training/modules/secure-hybrid-connectivity-azure/"
+   },
+   {
+    "t": "Eliminate public network exposure of Azure PaaS services",
+    "u": "https://learn.microsoft.com/en-us/training/modules/eliminate-public-exposure-paas-private-link/"
+   }
+  ]
+ },
+ "sc500:s7": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/implement-ai-security/",
+  "modTitle": "Implement security for AI",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Secure access for Microsoft Entra Agent Identity",
+    "u": "https://learn.microsoft.com/en-us/training/modules/secure-access-entra-agent-identity/"
+   },
+   {
+    "t": "Analyze AI identity risks using Microsoft Defender XDR",
+    "u": "https://learn.microsoft.com/en-us/training/modules/analyze-ai-identity-risks-defender-xdr/"
+   },
+   {
+    "t": "Enable real-time protection for Copilot Studio agents",
+    "u": "https://learn.microsoft.com/en-us/training/modules/enable-protection-copilot-studio-agents/"
+   },
+   {
+    "t": "Configure AI Gateway security in Microsoft Foundry",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-ai-gateway-security-foundry/"
+   },
+   {
+    "t": "Configure and manage guardrails in Microsoft Foundry",
+    "u": "https://learn.microsoft.com/en-us/training/modules/azure-ai-foundry-configure-manage-guardrails/"
+   },
+   {
+    "t": "Protect AI workloads with Microsoft Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/defender-for-cloud-ai-protect-workloads/"
+   },
+   {
+    "t": "Enable Defender for AI Services workload protection in Microsoft Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-defender-cloud-ai-services/"
+   },
+   {
+    "t": "Manage agents using Microsoft Agent 365",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-agents-microsoft-agent-365/"
+   },
+   {
+    "t": "Identify AI data risks using Microsoft Purview Data Security Posture Management",
+    "u": "https://learn.microsoft.com/en-us/training/modules/identify-ai-data-risks-purview/"
+   }
+  ]
+ },
+ "sc500:s8": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/server-vm-security/",
+  "modTitle": "Implement security for servers and virtual machines",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Implement disk encryption for Azure virtual machines",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-disk-encryption-azure-virtual-machines/"
+   },
+   {
+    "t": "Configure trusted launch security features for Azure virtual machines",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-trusted-launch-azure-virtual-machines/"
+   },
+   {
+    "t": "Plan and implement Azure Bastion",
+    "u": "https://learn.microsoft.com/en-us/training/modules/plan-implement-azure-bastion/"
+   },
+   {
+    "t": "Manage security for Arc-enabled hybrid servers",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-security-azure-arc-servers/"
+   },
+   {
+    "t": "Implement Microsoft Defender for Servers",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-microsoft-defender-servers/"
+   },
+   {
+    "t": "Enable and enforce just-in-time VM access",
+    "u": "https://learn.microsoft.com/en-us/training/modules/enable-enforce-just-in-time-vm-access/"
+   },
+   {
+    "t": "Enforce VM security configuration with Azure Machine Configuration",
+    "u": "https://learn.microsoft.com/en-us/training/modules/enforce-vm-security-machine-configuration/"
+   }
+  ]
+ },
+ "sc500:s9": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/secure-application-platform-services/",
+  "modTitle": "Secure Azure application platform services for the cloud and AI security engineer",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Detect container risks using Microsoft Defender for Containers",
+    "u": "https://learn.microsoft.com/en-us/training/modules/detect-container-risks-defender-containers/"
+   },
+   {
+    "t": "Implement security controls for Azure Kubernetes Service",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-security-controls-kubernetes/"
+   },
+   {
+    "t": "Implement security controls for Azure Container Registry, Container Instances, and Container Apps",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-security-controls-containers/"
+   },
+   {
+    "t": "Implement security controls for Azure Function apps and Logic apps",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-security-controls-function-logic-apps/"
+   },
+   {
+    "t": "Implement security controls for Azure App Services and Web Application Firewall",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-security-web-application-firewall/"
+   },
+   {
+    "t": "Implement API backend security using Azure API Management",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-application-interface-security-management/"
+   }
+  ]
+ },
+ "sc500:s10": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/manage-security-posture-defender-cloud/",
+  "modTitle": "Manage security posture by using Microsoft Defender for Cloud",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Connect hybrid and multicloud environments to Microsoft Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/connect-hybrid-multicloud-environments-defender/"
+   },
+   {
+    "t": "Identify security risks by using Cloud Security Posture Management",
+    "u": "https://learn.microsoft.com/en-us/training/modules/identify-security-risks-posture-management/"
+   },
+   {
+    "t": "Discover unprotected assets and vulnerabilities by using Microsoft Defender External Attack Surface Management",
+    "u": "https://learn.microsoft.com/en-us/training/modules/discover-external-assets-vulnerabilities/"
+   },
+   {
+    "t": "Evaluate regulatory compliance in Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/evaluate-regulatory-compliance/"
+   },
+   {
+    "t": "Enable and configure workload protection plans in Microsoft Defender for Cloud",
+    "u": "https://learn.microsoft.com/en-us/training/modules/enable-configure-workload-protection-plans/"
+   },
+   {
+    "t": "Configure Microsoft Defender Vulnerability Management settings for Azure VMs",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-defender-vulnerability-management/"
+   }
+  ]
+ },
+ "sc500:s11": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/implement-activity-event-collection-sentinel/",
+  "modTitle": "Implement activity and event collection in Microsoft Sentinel",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Create and manage Microsoft Sentinel workspaces",
+    "u": "https://learn.microsoft.com/en-us/training/modules/create-manage-azure-sentinel-workspaces/"
+   },
+   {
+    "t": "Manage content in Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-content-microsoft-sentinel/"
+   },
+   {
+    "t": "Connect Microsoft services to Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/connect-microsoft-services-to-azure-sentinel/"
+   },
+   {
+    "t": "Connect syslog data sources to Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/connect-syslog-data-sources-to-azure-sentinel/"
+   },
+   {
+    "t": "Connect Common Event Format logs to Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/connect-common-event-format-logs-to-azure-sentinel/"
+   },
+   {
+    "t": "Connect Windows hosts to Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/connect-windows-hosts-to-azure-sentinel/"
+   },
+   {
+    "t": "Implement automation rules and playbooks in Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/implement-automation-rules-playbooks-sentinel/"
+   },
+   {
+    "t": "Manage data storage and query audit logs in Microsoft Sentinel",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-data-storage-audit-logs-sentinel/"
+   }
+  ]
+ },
+ "sc500:s12": {
+  "mod": "https://learn.microsoft.com/en-us/training/paths/deploy-operate-security-copilot/",
+  "modTitle": "Deploy and operate Microsoft Security Copilot",
+  "modLabel": "Learning path",
+  "units": [
+   {
+    "t": "Describe Microsoft Security Copilot",
+    "u": "https://learn.microsoft.com/en-us/training/modules/security-copilot-getting-started/"
+   },
+   {
+    "t": "Configure workspaces for Microsoft Security Copilot",
+    "u": "https://learn.microsoft.com/en-us/training/modules/configure-security-copilot-workspaces/"
+   },
+   {
+    "t": "Manage plugins and agents in Microsoft Security Copilot",
+    "u": "https://learn.microsoft.com/en-us/training/modules/manage-plugins-agents-security-copilot/"
+   }
+  ]
+ }
+}

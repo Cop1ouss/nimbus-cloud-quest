@@ -55,7 +55,8 @@ with sync_playwright() as p:
     # certs page
     pg.click('.brand');pg.wait_for_timeout(100)
     t=pg.inner_text('#view');assert 'SC-900' in t and 'AZ-104' in t and 'Active' in t,t
-    pg.click('[data-act=locked] >> nth=0');pg.wait_for_timeout(100);assert 'not built yet' in pg.inner_text('#toast')
+    # every cert on the route has a pack now, so nothing is locked
+    assert pg.locator('[data-act=locked]').count()==0 and 'SC-500' in t and 'All four exams have study content' in t
     pg.screenshot(path='n_certs.png')
     pg.click('[data-act="go:home"]');pg.wait_for_timeout(100);assert 'Study plan' in pg.inner_text('#view')
     pg.wait_for_timeout(800)

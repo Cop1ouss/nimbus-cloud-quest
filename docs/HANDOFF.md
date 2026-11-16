@@ -11,7 +11,7 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 | AZ-900 | Built (v31) | 172 cards, 212 questions, 91 duels, 12 stops, 40-level Cloud Clash |
 | SC-900 | Built (v28) | 112 cards, 102 questions, 46 duels, 14 stops. Questions not yet checked against a Microsoft practice assessment |
 | AZ-104 | Built (v32) | 137 cards, 130 questions, 59 duels, 15 stops, 3 new 3D models. Not yet checked against a Microsoft practice assessment |
-| SC-500 | Built (v34) | 105 cards, 100 questions, 52 duels, 12 stops. Security for AI and other new areas checked on Learn; the PRD lists what was not re-checked. No practice assessment link yet |
+| SC-500 | Built (v34, checked v35) | 105 cards, 101 questions, 52 duels, 12 stops, 3 models. Facts checked on Learn. Practice assessment not released yet |
 
 - Live site: https://cop1ouss.github.io/nimbus-cloud-quest/ (GitHub Pages, `main`, root).
 - Claude artifact: https://claude.ai/artifact/PoB3gf2GAtn86ZcK5hRMyy (same app; has cloud sync and Ask Nimbo).
@@ -59,12 +59,12 @@ This is the plan to finish the cert path in Nimbus: **AZ-900 → SC-900 → AZ-1
 
 ## Backlog after the packs
 
-0. SC-500 follow-ups: verify the not-re-checked items listed in the PRD (v34), swap `msUrl` for the real practice assessment when Microsoft publishes it, and add 3D models (PIM activation, Key Vault access, Sentinel pipeline).
+0. SC-500: swap `msUrl` for the real practice assessment when Microsoft publishes it and remove `msNote`. (Facts and models done in v35.)
 
 1. Check SC-900 (then AZ-104, SC-500) questions against the new practice assessments on AI Skills Navigator and fix weak spots.
-2. Microsoft Learn unit links per stop for SC-900, AZ-104 and SC-500 (`units`).
+2. ~~Learn links per stop~~ done in v35 (`content/learn_units.py`).
 3. A Cloud Clash world per cert (`campaign` is AZ-900 only).
-4. Offline support for the home-screen app (service worker) so it opens without signal.
-5. A review mode built from missed questions across quizzes, mocks and duels.
+4. ~~Offline support~~ done in v35 (`sw.js`, GitHub Pages only).
+5. ~~Review mode from missed questions~~ done in v35 (Arena → Mistake review).
 6. Rebalance Cloud Clash enemy HP from Dajoni's real play, and fix whatever his iPhone playtest finds.
 7. Refresh the Anki deck export with the newer cards.

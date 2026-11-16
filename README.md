@@ -24,10 +24,12 @@ A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-
 
 **How it works**
 
-- **Codex:** every exam objective as a stop on a map, with notes, traps to avoid, and **interactive 3D models** you can turn and tap: defense in depth, Zero Trust, shared responsibility, the Azure management hierarchy, regions and zones, virtual networks, Conditional Access, Defender XDR, NSG rule evaluation, hub and spoke, and Load Balancer vs Application Gateway.
+- **Codex:** every exam objective as a stop on a map, with notes, traps to avoid, and **interactive 3D models** you can turn and tap: defense in depth, Zero Trust, shared responsibility, the Azure management hierarchy, regions and zones, virtual networks, Conditional Access, Defender XDR, NSG rule evaluation, hub and spoke, Load Balancer vs Application Gateway, PIM activation, Key Vault access and the Sentinel pipeline.
 - **Deck:** spaced-repetition flashcards that flip back, rated Again, Shaky, Good or Easy.
 - **Arena:** training quizzes (including Choose 2, Yes/No and match questions), "Which one?" duels for look-alike services, and **3D boss battles** at easy, medium and hard.
 - **Mock exams:** timed and weighted by domain like the real exam.
+- **Mistake review:** every question and duel pair you got wrong, in one place, until you get it right twice in a row.
+- **Works offline** once added to the home screen.
 - **Cloud Clash:** a 40-level card battler where you defend an Azure tenant. Every card asks an exam question before it plays.
 - **Progress:** XP, levels, streaks, badges and per-objective accuracy.
 
@@ -63,20 +65,19 @@ python3 content/camp_data2.py       # regenerate Worlds 2 to 4
 (cd content/sc && python3 sc_build.py)   # regenerate the SC-900 pack
 (cd content/az104 && python3 az_build.py)   # regenerate the AZ-104 pack
 (cd content/sc500 && python3 s5_build.py)   # regenerate the SC-500 pack
+python3 content/learn_units.py --fetch   # refresh Microsoft Learn links per stop
 python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions and duels
 pip install playwright && python3 -m playwright install chromium
-python3 tests/t42.py out/          # SC-900, AZ-104 and 3D models smoke test
+python3 tests/t42.py out/          # SC-900, AZ-104, SC-500 and 3D models smoke test
+python3 tests/t43.py out/          # Mistake review
 npm i axe-core@4.10.2 && python3 tests/t41.py   # accessibility, Frappé and Latte
 ```
 
 ## Backlog
 
 - Check SC-900 questions against the new practice assessments
-- Microsoft Learn links per stop
 - A Cloud Clash world per cert
-- Offline support for the home-screen app
-- A review mode built from your missed questions
-- SC-500 follow-ups: verify remaining facts, practice assessment link, 3D models
+- SC-500 practice assessment link when Microsoft releases it
 
 ## Related
 

@@ -19,7 +19,7 @@ S(1,"High","PIM, Conditional Access, app identity and consent. The identity base
   "**Managed identity:** system-assigned (one resource) or user-assigned (shared)."],
  ["Application permissions cannot be user-consented.","User assignment is set on the enterprise application, not the app registration."],
  ["Eligible until activated."],
- "entra/identity/conditional-access/overview","Conditional Access overview",["ca"]),
+ "entra/identity/conditional-access/overview","Conditional Access overview",["pim","ca"]),
 S(2,"High","Roles, soft delete vs purge protection, and the firewall. Expect exact role names.",
  ["Stores **secrets, keys, certificates**. **Premium** = HSM-protected keys.",
   "**Azure RBAC** is the recommended access model. Data-plane roles: Secrets User, Secrets Officer, Crypto User, Crypto Officer, Certificates Officer, Administrator, Reader.",
@@ -29,7 +29,7 @@ S(2,"High","Roles, soft delete vs purge protection, and the firewall. Expect exa
   "**Defender CSPM** finds exposed secrets. **Defender for Key Vault** alerts on suspicious access."],
  ["Key Vault Reader cannot read secret values.","Management-plane Contributor is not data access under RBAC."],
  ["Soft delete is the recycle bin. Purge protection is the lock on it."],
- "azure/key-vault/general/secure-key-vault","Secure your Azure Key Vault"),
+ "azure/key-vault/general/secure-key-vault","Secure your Azure Key Vault",["kv"]),
 S(3,"High","Policy, standards, custom roles, least privilege and backup protection.",
  ["**Policy:** built-in or custom definitions, initiatives, assignments, exemptions. **Deny** blocks, **Audit** reports.",
   "**MCSB** is the default standard behind recommendations and secure score. Add regulatory standards for the **compliance dashboard**.",
@@ -130,7 +130,7 @@ S(11,"High","Roles, connectors, tables and tiers.",
   "Purview Audit data is searchable from the Defender portal; **CloudAppEvents** in advanced hunting."],
  ["Lake-only tables do not feed analytics rules.","Responder cannot run playbooks without Playbook Operator."],
  ["Rule fires, automation rule sorts, playbook acts."],
- "azure/sentinel/roles","Roles and permissions in Microsoft Sentinel"),
+ "azure/sentinel/roles","Roles and permissions in Microsoft Sentinel",["sentinel"]),
 S(12,"Medium","Short stop. Roles and what they do not grant.",
  ["**SCUs** are the capacity, an Azure resource attached to a **workspace**.",
   "Roles: **Owner** and **Contributor**. Platform access only, not Entra roles, never data access.",
@@ -145,7 +145,7 @@ S(12,"Medium","Short stop. Roles and what they do not grant.",
 META=dict(id='sc500',code='SC-500',name=OUT['name'],quest='SC-500 Quest',domains=OUT['domains'],weights=OUT['weights'],
  bosses={"1":["The Standing Admin",""],"2":["The Open Endpoint",""],"3":["The Rogue Agent",""],"4":["The Blind SOC",""]},
  mix=OUT['suggestedMix'],quickMix=[5,6,5,4],fullMins=OUT['suggestedMins'],quickMins=40,hardMins=100,passPct=70,bookPct=80,
- msUrl=OUT['studyGuide'],studyGuide=OUT['studyGuide'],
+ msUrl='https://learn.microsoft.com/en-us/credentials/certifications/cloud-and-ai-security-engineer-associate/?practice-assessment-type=certification',msNote='Not released yet. Microsoft adds it about eight weeks after the exam leaves beta. This opens the cert page where it will appear.',studyGuide=OUT['studyGuide'],
  taunts={"1":["\"Permanent Global Admin.\"","\"Consent to everything.\"","\"Purge it, who cares.\"","\"Break-glass? Never heard.\""],
          "2":["\"Keys for everyone.\"","\"Public blobs are fine.\"","\"The NSG will save you.\"","\"DBAs can read it all.\""],
          "3":["\"Agents need no sponsor.\"","\"RDP open, always.\"","\"Detection mode forever.\"","\"Ignore the tool call.\""],
@@ -163,5 +163,6 @@ assert sum(META['mix'])==50 and len(DUELS)>=36
 P='../../src/data_packs.json';data=json.load(open(P))
 data['packs']['sc500']=dict(meta=META,cards=CARDS,questions=QS,sections=SECS,duels=DUELS)
 data['planned']=[p for p in data['planned'] if p['id']!='sc500']
+sys.path.insert(0,'..');import learn_units;learn_units.apply(data)
 json.dump(data,open(P,'w'),ensure_ascii=False)
 print('sc500',len(CARDS),'cards',len(QS),'questions',len(DUELS),'duels',len(SECS),'sections',{d:sum(q['d']==int(d) for q in QS) for d in META['domains']})
