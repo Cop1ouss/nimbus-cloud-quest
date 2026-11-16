@@ -30,7 +30,7 @@ A phone-first study game for my Azure security path: **AZ-900 → SC-900 → AZ-
 - **Mock exams:** timed and weighted by domain like the real exam.
 - **Mistake review:** every question and duel pair you got wrong, in one place, until you get it right twice in a row.
 - **Works offline** once added to the home screen.
-- **Cloud Clash:** a 40-level card battler where you defend an Azure tenant. Every card asks an exam question before it plays.
+- **Cloud Clash:** a card battler where you defend an Azure tenant: 40 levels for AZ-900, plus one world per domain for SC-900 (12 levels), AZ-104 (15) and SC-500 (12). Every card asks an exam question before it plays.
 - **Progress:** XP, levels, streaks, badges and per-objective accuracy.
 
 ## Use it on your phone
@@ -53,7 +53,7 @@ Progress is stored in your browser's `localStorage` on each device. Nothing is s
 | `src/app.js` | The whole app: Codex, Deck, Arena, bosses, mocks, Cloud Clash and the 3D models |
 | `src/data_packs.json` | All content: AZ-900, SC-900, AZ-104 and SC-500 cards, questions, duels, Codex stops and the Cloud Clash campaign |
 | `content/` | Scripts that generate content into `src/data_packs.json`: the Cloud Clash worlds, the SC-900, AZ-104 and SC-500 packs |
-| `tests/` | Playwright checks: regressions, a 40-level campaign bot, backup and restore, accessibility, SC-900, AZ-104 and 3D models |
+| `tests/` | Playwright checks: regressions, campaign bots for every cert, backup and restore, accessibility, SC-900, AZ-104 and 3D models |
 | `docs/` | PRD, Build Protocol and the game design doc |
 
 ```bash
