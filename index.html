@@ -1029,8 +1029,8 @@ function seedRnd(str){var h=1779033703^str.length;for(var i=0;i<str.length;i++){
 var FOES=[['rv',1,'Bill Shock Imp'],['rv',2,'Latency Gremlin'],['rv',3,'Misconfig Phantom']],BOSSF=[['boss',1,'CapEx Colossus'],['boss',2,'Zone Hydra'],['boss',3,'Policy Warden']];
 function w1Boss(){var L=CAMP().levels.filter(function(x){return x.world===1}).pop();return 'the '+L.foe[2]+' (level '+L.id+')'}
 function azLv(){return (state.camp&&state.camp.lv)||{}}
-// On-Call and Daily open after the last level of World 1 (level 10 in AZ-900)
-function modesOpen(){var C=CAMP();if(!C)return false;var ids=C.levels.filter(function(L){return L.world===1}).map(function(L){return L.id});return !!campSave().lv[Math.max.apply(null,ids)]}
+// On-Call and Daily open after the AZ-900 CapEx Colossus, or the world 1 boss of the selected cert
+function modesOpen(){var C=CAMP();if(!C)return false;if(azLv()[10])return true;var ids=C.levels.filter(function(L){return L.world===1}).map(function(L){return L.id});return !!campSave().lv[Math.max.apply(null,ids)]}
 function endlessLevel(w){var boss=w%5===0,f=boss?BOSSF[(w/5-1)%3]:FOES[(w-1)%3],ks=pickN(threatsFor(S.loadout),boss?6:4);ks.splice(1,0,'hit');return {id:0,world:4,n:'On-Call Shift · Incident '+w,foe:f,hp:boss?30+6*w:14+4*w,up:0,intents:ks}}
 function hitsHard(lo){return lo.some(function(id){var cd=CAMP().cards[id];return cd.tp||(cd.fx||[]).some(function(f){return f[0]==='dmg'})})}
 function startEndless(){var c=campSave(),un=campUnlocked(),lo=c.loadout.filter(function(id){return un.indexOf(id)>=0});if(lo.length<5){toast('Pick at least 5 cards for your loadout');S={type:'camp',view:'loadout'};return}

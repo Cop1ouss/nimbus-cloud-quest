@@ -37,8 +37,8 @@ with sync_playwright() as p:
     pg.on('pageerror', lambda e: errs.append(str(e)))
     pg.on('console', lambda m: m.type == 'error' and errs.append(m.text))
     pg.goto(F); pg.wait_for_timeout(300)
-    # AZ-900 player with World 1 cleared: that save must survive other campaigns
-    pg.evaluate("localStorage.setItem('nimbus_az900',JSON.stringify({camp:{lv:{1:3,2:3,3:3,4:3,5:3,6:3,7:3,8:3,9:3,10:2},mast:{}},onboarded:true}))")
+    # AZ-900 player one level short of the CapEx Colossus: that save must survive other campaigns
+    pg.evaluate("localStorage.setItem('nimbus_az900',JSON.stringify({camp:{lv:{1:3,2:3,3:3,4:3,5:3,6:3,7:3,8:3,9:2},mast:{}},onboarded:true}))")
     pg.reload(); pg.wait_for_timeout(300)
     for cert in CERTS:
         pk = PACKS[cert]; C = pk['campaign']['cards']; T = pk['campaign']['threats']
@@ -61,7 +61,7 @@ with sync_playwright() as p:
                 pg.click('[data-act=campmap]'); pg.wait_for_timeout(40)
                 assert pg.locator('[data-act=daily][disabled]').count() == 0, 'modes open after world 1'
     st = pg.evaluate("JSON.parse(localStorage.getItem('nimbus_az900'))")
-    assert st['camp']['lv'] == {str(i): (2 if i == 10 else 3) for i in range(1, 11)}, st['camp']['lv']
+    assert st['camp']['lv'] == {str(i): (2 if i == 9 else 3) for i in range(1, 10)}, st['camp']['lv']
     for cert in CERTS:
         assert len(st['campx'][cert]['lv']) == len(PACKS[cert]['campaign']['levels']), cert
     b.close()
