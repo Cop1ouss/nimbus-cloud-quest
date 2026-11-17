@@ -67,6 +67,7 @@ python3 content/camp_data2.py       # regenerate Worlds 2 to 4
 (cd content/sc500 && python3 s5_build.py)   # regenerate the SC-500 pack
 python3 content/learn_units.py --fetch   # refresh Microsoft Learn links per stop
 python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions and duels
+python3 content/az900_pa4.py       # add the Nov 17 practice assessment misses, flagged weak
 pip install playwright && python3 -m playwright install chromium
 python3 tests/t42.py out/          # SC-900, AZ-104, SC-500 and 3D models smoke test
 python3 tests/t43.py out/          # Mistake review
