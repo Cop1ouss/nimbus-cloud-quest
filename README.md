@@ -69,6 +69,7 @@ python3 content/learn_units.py --fetch   # refresh Microsoft Learn links per sto
 python3 content/az900_crunch.py    # add the AZ-900 crunch-time cards, questions and duels
 python3 content/az900_pa4.py       # add the Nov 17 practice assessment misses, flagged weak
 python3 content/az900_pa5.py       # add the Nov 18 misses and rule-check scenarios, flagged weak
+python3 content/ms_log.py          # Microsoft practice results shown in Score history
 pip install playwright && python3 -m playwright install chromium
 python3 tests/t42.py out/          # SC-900, AZ-104, SC-500 and 3D models smoke test
 python3 tests/t43.py out/          # Mistake review

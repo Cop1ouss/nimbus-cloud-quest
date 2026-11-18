@@ -20,14 +20,16 @@ var TABS=[['home','Hub'],['learn','Codex'],['cards','Deck'],['play','Arena'],['m
 /* ---------- state ---------- */
 function fresh(){return {camp:{lv:{},mast:{}},rivals:{},recallQ:false,recallType:true,mockSave:false,cert:'az900',certs:{},voucher:'',layout:'',mute:false,v:4,xp:0,day:{d:'',cards:0,quiz:0,duel:0,claimed:[]},days:{},stats:{cards:0,quizRight:0,duelWins:0,bestCombo:0,bosses:0,mocks:0},
   read:{},badges:{},boss:{},att:BASE?[BASE]:[],cards:{},q:{},du:{},exam:'',theme:'',campx:{}}}
-var state=fresh(),ref=null,saveT=0;
+var state=fresh(),ref=null,saveT=0;ensureBase();
 function today(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
 function lsGet(k){try{var s=localStorage.getItem(k);return s?JSON.parse(s):null}catch(e){return null}}
 var SLICE=['cards','q','du','read','boss','att','exam','voucher'];
 function blank(k,id){var b=PACKS[id].meta.base;return k==='att'?(b?[b]:[]):(k==='exam'||k==='voucher')?'':{}}
 function syncSlice(){state.certs=state.certs||{};var o={};SLICE.forEach(function(k){o[k]=state[k]});state.certs[state.cert]=o}
 function loadSlice(id){var o=(state.certs&&state.certs[id])||{};SLICE.forEach(function(k){state[k]=o[k]!==undefined&&o[k]!==null?o[k]:blank(k,id)})}
-function ensureBase(){if(BASE&&!state.att.some(function(a){return a.src==='ms'&&a.t===BASE.t}))state.att.unshift(BASE)}
+function ensureBase(){if(BASE&&!state.att.some(function(a){return a.src==='ms'&&a.t===BASE.t}))state.att.unshift(BASE);
+  // shipped practice results: add each one this browser is missing (same date and score, repeats counted)
+  var seen={};(META.msLog||[]).forEach(function(e){var k=e.t+'|'+e.pct;seen[k]=(seen[k]||0)+1;var have=state.att.filter(function(a){return a.src==='ms'&&a.t===e.t&&a.pct===e.pct}).length;if(have<seen[k])state.att.push(JSON.parse(JSON.stringify(e)))})}
 function switchCert(id){if(id===state.cert||!PACKS[id])return false;syncSlice();state.cert=id;usePack(id);loadSlice(id);ensureBase();return true}
 function merge(s){if(!s||typeof s!=='object')return;try{s=JSON.parse(JSON.stringify(s))}catch(e){return}
   var f=fresh();Object.keys(f).forEach(function(k){if(s[k]!==undefined&&s[k]!==null)state[k]=s[k]});
@@ -559,7 +561,7 @@ function renderMe(){var l=level(state.xp);
   var h='<div class="panel hero" style="margin-top:16px"><div>'+nimbo('happy',l>=7)+'</div><div><h2 style="margin:0">'+esc(TITLES[l])+'</h2><p class="sub" style="margin:4px 0 0">Level '+(l+1)+' · '+state.xp+' XP</p><p class="small mute" style="margin:2px 0 0">Best streak counts days with 30+ XP.</p></div></div>';
   var r=readiness();
   h+='<div class="panel"><h2>Ready to book?</h2><p class="small sub" style="margin:0 0 4px">'+r.items.filter(function(i){return i.ok}).length+' of '+r.items.length+' done</p><div class="bar" style="margin-bottom:8px"><i style="width:'+Math.round(100*r.items.filter(function(i){return i.ok}).length/r.items.length)+'%;background:var(--ok)"></i></div>'+r.items.map(function(i){return '<div class="chk"><b class="'+(i.ok?'done':'mute')+'">'+(i.ok?'✓':'')+'</b><span>'+esc(i.t)+'</span></div>'}).join('')+'<p class="small mute" style="margin:8px 0 0">All five done means go ahead and book.</p></div>'+objPanel();
-  h+='<div class="panel"><h2>Score history</h2>'+histChart()+'<p class="small sub" style="margin:0 0 8px">Took Microsoft\u2019s own practice test? <a href="'+META.msUrl+'" target="_blank" rel="noopener" style="color:var(--acc);font-weight:800">Open it \u2197</a> and log the score here.</p><form id="logForm" class="row" style="margin-top:12px"><input id="logPct" type="number" min="0" max="100" inputmode="numeric" placeholder="Microsoft practice %" aria-label="Microsoft practice test score" style="flex:1 1 150px"><button class="btn pri" type="submit">Log score</button></form></div>';
+  h+='<div class="panel"><h2>Score history</h2>'+histChart()+'<p class="small sub" style="margin:0 0 8px">Took Microsoft\u2019s own practice test? <a href="'+META.msUrl+'" target="_blank" rel="noopener" style="color:var(--acc);font-weight:800">Open it \u2197</a> and log the score here.</p><form id="logForm" class="row" style="margin-top:12px"><input id="logDate" type="date" aria-label="Date taken" max="'+today()+'" value="'+today()+'" style="flex:0 1 150px"><input id="logPct" type="number" min="0" max="100" inputmode="numeric" placeholder="Microsoft practice %" aria-label="Microsoft practice test score" style="flex:1 1 150px"><button class="btn pri" type="submit">Log score</button></form></div>';
   h+='<div class="panel"><h2>Badges ('+BADGES.filter(function(b){return state.badges[b[0]]}).length+'/'+BADGES.length+')</h2><div class="badges">'+BADGES.map(function(b){var on=!!state.badges[b[0]];return '<div class="bdg'+(on?'':' lock')+'"><span class="e">'+hexBadge(b[0])+'</span>'+esc(b[2])+'<br><span class="mute" style="font-weight:600">'+esc(b[3])+'</span></div>'}).join('')+'</div></div>';
   h+='<div class="panel"><h2>Exam dates</h2><label class="small mute" for="examDate">Exam date</label><input id="examDate" type="date" value="'+esc(state.exam||'')+'" aria-label="Exam date"><label class="small mute" for="vDate" style="display:block;margin-top:10px">Voucher deadline (optional)</label><input id="vDate" type="date" value="'+esc(state.voucher||'')+'" aria-label="Voucher deadline">'+(voucherNote()?'<p class="small" style="margin:8px 0 0;font-weight:800;color:var(--xp)">'+esc(voucherNote())+'</p>':'')+'</div>';
   h+='<div class="panel"><h2>Tap diagnostics</h2><p class="small mute" style="margin:0">Last press: '+esc(DBG.pd)+'<br>Last handled: '+esc(DBG.cl)+(DBG.err?'<br>Error: '+esc(DBG.err):'')+'</p></div>';
@@ -1027,7 +1029,7 @@ function render(){header();renderNav();var v=$('#view');v.className=(S||C||(tab=
   var sz=$('#cSize');if(sz)sz.value=String(cf.size);
   var ed=$('#examDate');if(ed)ed.addEventListener('change',function(){state.exam=ed.value;save();render()});
   var vd=$('#vDate');if(vd)vd.addEventListener('change',function(){state.voucher=vd.value;save();render()});
-  var lf=$('#logForm');if(lf)lf.addEventListener('submit',function(e){e.preventDefault();var n=parseInt($('#logPct').value,10);if(isNaN(n)||n<0||n>100){toast('Enter a score from 0 to 100');return}state.att.push({t:today(),pct:n,src:'ms'});toast('Logged '+n+'%');after();render()})}
+  var lf=$('#logForm');if(lf)lf.addEventListener('submit',function(e){e.preventDefault();var n=parseInt($('#logPct').value,10);if(isNaN(n)||n<0||n>100){toast('Enter a score from 0 to 100');return}var dt=($('#logDate')&&$('#logDate').value)||today();if(dt>today())dt=today();state.att.push({t:dt,pct:n,src:'ms'});toast('Logged '+n+'%');after();render()})}
 function leave(){if(S&&S.timer)clearInterval(S.timer);if(AICTL&&S&&S.type==='aiload')AICTL.abort();if(C&&C.ctl&&C.busy)C.ctl.abort();C=null;S=null}
 document.addEventListener('input',function(e){if(e.target&&e.target.id==='recallIn'&&S&&S.type==='cards'){S.typed=S.typed||{};S.typed[S.q[S.i]]=e.target.value}});
 document.addEventListener('change',function(e){var t=e.target;if(!t||!t.matches||!t.matches('select[data-cell]')||!S||!S.items||S.chk)return;var i=parseInt(t.getAttribute('data-cell'),10);S.sel[i]=t.value===''?null:parseInt(t.value,10);if(S.type==='mock')mockAnswerSave();SFX.tap();render()});

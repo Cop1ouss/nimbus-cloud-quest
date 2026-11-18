@@ -52,7 +52,7 @@
 - [x] v35: SC-500 facts verified and fixed, practice assessment note, 3 new models (PIM, Key Vault, Sentinel); Mistake review; offline support; Learn links on every SC-900, AZ-104 and SC-500 stop.
 - [x] v36: Cloud Clash for SC-900 (12 levels), AZ-104 (15) and SC-500 (12) with per-cert saves; SC-900 checked against Learn and the October 21, 2026 outline.
 - [x] v37: AZ-900 Practice Assessment 4 misses (18 questions, 11 duels, 5 cards, flagged weak).
-- [x] v38: AZ-900 Practice Assessment 5 misses and rule check (17 questions, 8 duels, 3 cards, flagged weak).
+- [x] v38: AZ-900 Practice Assessment 5 misses and rule check (17 questions, 8 duels, 3 cards, flagged weak) and the practice exam log in Score history.
 - [ ] Dajoni plays on iPhone and reports anything off.
 
 ## 5 · Maintain (Emerald)
